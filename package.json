@@ -1,9 +1,12 @@
 {
-  "name": "tweeviews",
-  "description": "submit reviews via twitter",
+  "name": "application-name",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
-    "express": "4.x"
+    "express": "3.5.1",
+    "jade": "*"
   }
 }
