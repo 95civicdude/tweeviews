@@ -20,7 +20,11 @@ exports.index = function(req, res){
 	});
 };
 
-$(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
+exports.display = function(req, res){
+  	res.render('display', {});
+};
+
+// $(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
 
 // jeffs-testcompany	m6alb4h78ttx8d9rznzmxsqw1	Conversations API (stg)	BV Internal / Unknown	BV Internal / Unknown	 Enabled  Disable
 // jeffs-testcompany	hjly6y9tg13swpa22oi87p3of	Conversations API	BV Internal / Unknown	BV Internal / Unknown	 Enabled  Disable

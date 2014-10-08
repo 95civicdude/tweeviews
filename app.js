@@ -29,10 +29,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.post('/test-page', function(req, res) {
-    var name = req.body.name;
-    var color = req.body.color;
+app.get('/display', routes.display);
+app.post('/createCampaign', function(req, res) {
+    console.log(req.body);
+    return "Cool, we'll start listening for " + req.body.campaignid;
 });
 
 http.createServer(app).listen(app.get('port'), function(){

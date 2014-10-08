@@ -1,8 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  h2  hello there1
-  script.
-    $(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
+	div
+		form(action='/createCampaign',method='post')
+			div(data-role='fieldcontain')
+				fieldset(data-role='controlgroup')
+					label(for='email') Campaign ID
+						input(id='campaignid',type='text',value='',placeholder='#wutwut',name='campaignid')
+			div#passworddiv(data-role='fieldcontain')
+				fieldset(data-role='controlgroup')
+					label(for='password') Product ID
+						input(id='productid',type='text',value='',placeholder='bvproductid',name='productid')
+			div(data-role='fieldcontain')   
+				input(type='submit',value='Sign Up',data-transition='fade', data-theme='c')
