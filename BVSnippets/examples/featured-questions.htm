@@ -1,0 +1,27 @@
+<html>
+<head><title>Example of Featured Questions integration</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+	<script type="text/javascript" src="../js/handlebars.js"></script>
+	<script type="text/javascript" src="../js/bvSnippets.js"></script>
+	<link href="../css/clientSampleStyles.css" rel="stylesheet">
+	<link href="../css/bvSnippets_global.css" rel="stylesheet">
+	<script type="text/javascript">
+		$(function(){
+			$(".BVFeaturedQuestion").featuredQuestions('72n07szwiwjspk7x6idcry4ch', {
+				sort: 'LastModificationTime:desc',
+				filters: 'IsFeatured:false',
+				questionsPerPage: '3',
+				staging: true,
+				limit: 3,
+				legacy_hostname: 'http://answers.myshco.com',
+				displaycode: '9344-en_us',
+				abbreviate_text: 200
+			});
+		});
+	</script>
+</head>
+<body>
+	Test:
+	<div class="BVFeaturedQuestion BVLQWidgetCol" data-id="3000001"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+body{background: #f1f1f1; border-top: 3px solid #003d4c; padding-top: 12px; font-family: Helvetica, Arial, sans-serif;}
+a {color: #69c;}
+.clientRow {margin: 30px auto 0; overflow: hidden; width: 960px;}
+.clientSampleContainerLeftCol {float: left; width: 300px;}
+.clientSampleContainerLeftColTwoThirds {float: left; width: 630px;}
+.clientSampleContainerRightCol {float: right; width: 300px;}
+.clientcontent {background: none repeat scroll 0 0 #DDDDDD; border-radius: 6px 6px 6px 6px; padding: 20px 0; color: #fff; font-size: 36px; font-weight: bold;}
+.clientSectionHeadings {background: none repeat scroll 0 0 #DDDDDD; border-radius: 6px 6px 6px 6px; margin-bottom: 20px; padding: 20px; text-align: center; color: #444; font-weight: bold;}
+#footer {display: none;}
+
+/*ClientContent*/
+.content_wrapper {width: 960px;}
+.headerLogo {background: url(../images/logo.gif) 0 0 no-repeat; display: block; height: 100px; width: 360px;}
+.headerLogo img {display: none;}
+.clientRow {display: block; margin: 24px 0; overflow: hidden; clear: both;}
+.ClientHero {background: url(../images/hero.jpg) center center; height: 320px; margin: 0 auto; padding: 20px 0; width: 960px;}
+.clientHeroText {padding-left: 20px;}
+.productleftsmall {float: left; width: 366px; margin-right: 30px;}
+.productrightsmall {float: right; width: 366px; margin-left: 30px; overflow: hidden; position: relative;}
+.productrightsmall .BVFRWContainerHeader, .productrightsmall .BVFRWContent {margin-bottom: 0; position: relative; z-index: 10; background-color: rgba(235, 231, 213, 0.7); overflow: hidden;}
+.productrightsmall .BVFWRatingWrapper {margin-top: 14px;}
+.productrightsmall img {position: absolute; width: 200px; z-index: 0;}
+.productrightsmall .BVFRWProductImage {float: none; margin: 0; padding: 0; border: none;}
+
+body {background-color: #f1f1f1; border-top: 3px solid #003D4C; padding-top: 15px; margin: 0; text-align: center; font-family: Arial, Helvetica, sans-serif; color: #333; font-size: 1em;}
+a {color: #276C9D; text-decoration: none;}
+a:hover {text-decoration: underline;}
+
+ul {margin: 0;}
+li {list-style-type: none;}
+
+h1 {color: #002F4C; font-size: 22px; font-weight: bold; margin-bottom: 10px;}
+h2 {color: #002F4C; font-size: 20px; font-weight: bold; margin: 0;}
+
+img {max-width: 100%; height: auto; width: auto\9; /* ie8 */}
+
+.clientSectionHeadings {background: none repeat scroll 0 0 #DDDDDD; border-radius: 6px 6px 6px 6px; margin-bottom: 20px; padding: 20px; text-align: center; text-transform: capitalize; color: #444; font-weight: bold;}
+
+.clear {content: "."; height: 0; width: 0; visibility: hidden; display: block; clear: both;}
+
+/* HEADER */
+.header {padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #ccc;}
+.content_wrapper {
+width: 980px;
+margin: 0 auto;
+text-align: left;
+}
+a.headerLogo {
+display: block;
+float: left
+}
+.tabs {
+float: right;
+width: 432px;
+margin-top: 35px
+}
+.tabs.accountFunctions {
+margin-top: 10px
+}
+.tabs li {
+float: left;
+font-size: 12px;
+color: #666666
+}
+.tabs li span {
+font-weight: normal
+}
+.tabs li a {
+}
+.tabs li.current a {
+color: #666666
+}
+.tabs li.home {
+}
+.tabs li.cart {
+}
+.tabs li.right {
+float: right;
+margin-right: 0
+}
+.tabs li.user {
+}
+.tabs li.orders {
+}
+.tabs li.logout {
+padding-left: 0
+}
+span.mini_cart {
+font-weight: normal;
+color: #999
+}
