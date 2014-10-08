@@ -50,6 +50,21 @@ var localPath = scriptPath.substr(0, scriptPath.lastIndexOf( '/js' )+1 );
         defaultSnippet(defaultConfiguration, apikey, options);
     };
 
+    $.fn.tweeviews = function(apikey, options){
+        //define option defaults for inline ratings.  this also enumerates all possible options
+        var defaultConfiguration = {
+            selectedElements: this
+        };
+        options.template = 'tweeviews';
+        options.apiQueryType = 'reviews';
+        //options.filter = 'IsFeatured:true';
+        options.sort = 'LastModificationTime:desc';
+        options.limit = 1;
+        options = parseOptions(options);
+        
+        defaultSnippet(defaultConfiguration, apikey, options);
+    };
+
     $.fn.inlineRatings = function(apikey, options){
         //define option defaults for inline ratings.  this also enumerates all possible options
         var defaultConfiguration = {
