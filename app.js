@@ -32,8 +32,27 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/display', routes.display);
 app.post('/createCampaign', function(req, res) {
-    console.log(req.body);
-    routes.thankyou(req, res);
+    var MongoClient = require('mongodb').MongoClient;
+
+    // Use connect method to connect to the Server
+    MongoClient.connect('mongodb://localhost:27017/tweeviews', function(err, db) {
+      var collection = db.collection('clients');
+
+      collection.update({ 'client' : 'jeffs-testcompany' }, {
+        $addToSet : { "products" : {
+            "external_id" : req.body.productid,
+            "hash_tag" : req.body.producthash
+        }}
+      }, function(err, result) {
+        if (err != null) {
+            console.log(err);
+        }
+      });
+
+      db.close();
+    });
+
+    res.render('display', {});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
