@@ -57,9 +57,9 @@ var localPath = scriptPath.substr(0, scriptPath.lastIndexOf( '/js' )+1 );
         };
         options.template = 'tweeviews';
         options.apiQueryType = 'reviews';
-        //options.filter = 'IsFeatured:true';
+        options.filter = 'CampaignId:tweeviews';
         options.sort = 'LastModificationTime:desc';
-        options.limit = 1;
+        options.limit = 5;
         options = parseOptions(options);
         
         defaultSnippet(defaultConfiguration, apikey, options);
