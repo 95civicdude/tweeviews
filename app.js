@@ -17,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.bodyParser());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -32,6 +33,7 @@ app.get('/', routes.index);
 app.get('/display', routes.display);
 app.post('/createCampaign', function(req, res) {
     console.log(req.body);
+    routes.thankyou(req, res);
     return "Cool, we'll start listening for " + req.body.campaignid;
 });
 
