@@ -44,12 +44,12 @@ app.post('/createCampaign', function(req, res) {
             "hash_tag" : req.body.producthash
         }}
       }, function(err, result) {
-        if (err != null) {
-            console.log(err);
+        if (err) {
+            throw err;
         }
-      });
 
-      db.close();
+        db.close();
+      });
     });
 
     res.render('display', {});
