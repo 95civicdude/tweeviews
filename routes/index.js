@@ -25,7 +25,7 @@ exports.display = function(req, res){
 };
 
 exports.thankyou = function(req, res){
-  	res.render('thankyou', {});
+  	res.render('thankyou', { hashtag: req.body.producthash });
 };
 
 // $(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });

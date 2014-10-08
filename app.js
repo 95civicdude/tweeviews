@@ -34,7 +34,6 @@ app.get('/display', routes.display);
 app.post('/createCampaign', function(req, res) {
     console.log(req.body);
     routes.thankyou(req, res);
-    return "Cool, we'll start listening for " + req.body.campaignid;
 });
 
 http.createServer(app).listen(app.get('port'), function(){
