@@ -47,7 +47,6 @@ app.post('/createCampaign', function(req, res) {
         if (err) {
             throw err;
         }
-
         db.close();
       });
     });
