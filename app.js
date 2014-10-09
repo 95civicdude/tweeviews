@@ -5,6 +5,7 @@
 
 var express = require('express');
 var routes = require('./routes');
+var clients = require('./routes/clients');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -31,6 +32,9 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/display', routes.display);
+app.get('/clients', clients.display);
+
+app.post('/clients/create', clients.create);
 app.post('/createCampaign', function(req, res) {
     var MongoClient = require('mongodb').MongoClient;
 

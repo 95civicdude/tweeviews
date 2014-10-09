@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title clients
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+  body
+    form(method='post', action='/clients/create')
+        fieldset
+            legend Basic Info
+            label Name
+                input(type='text', name='name')
+            br
+            label API Key
+                input(type='text', name='apiKey')
+        br
+        fieldset
+            legend Twitter Info
+            label Twitter Handle
+                input(type='text', name='twitterHandle')
+            br
+            label Consumer Key
+                input(type='text', name='consumerKey')
+            br
+            label Consumer Secret
+                input(type='text', name='consumerSecret')
+            br
+            label Access Token Key
+                input(type='text', name='accessTokenKey')
+            br
+            label Access Token Secret
+                input(type='text', name='accessTokenSecret')
+        br
+        input(type='submit', value='SUBMIT')
