@@ -15,26 +15,26 @@ CLIENT RECORD SCHEMA
 ====================
 The collection is named `clients`. The documents in the collection look like this:
 
-`{
-    "name" : "xxxxxxxxx",
-    "apiKey" : "xxxxxxxxx",
-    "encodingKey" : "xxxxxxxxx",
-    "twitterHandle" : "xxxxxxxxx",
-    "consumerKey": "xxxxxxxxx",
-    "consumerSecret": "xxxxxxxxx",
-    "accessTokenKey": "xxxxxxxxx",
-    "accessTokenSecret": "xxxxxxxxx",
-    "products" : [
         {
-            "externalId" : "0000",
-            "hashTag" : "#tag"
-        },
-        {
-            "externalId" : "0001",
-            "hashTag" : "#tag"
+            "name" : "xxxxxxxxx",
+            "apiKey" : "xxxxxxxxx",
+            "encodingKey" : "xxxxxxxxx",
+            "twitterHandle" : "xxxxxxxxx",
+            "consumerKey": "xxxxxxxxx",
+            "consumerSecret": "xxxxxxxxx",
+            "accessTokenKey": "xxxxxxxxx",
+            "accessTokenSecret": "xxxxxxxxx",
+            "products" : [
+                {
+                    "externalId" : "0000",
+                    "hashTag" : "#tag"
+                },
+                {
+                    "externalId" : "0001",
+                    "hashTag" : "#tag"
+                }
+            ]
         }
-    ]
-}`
 
 Working with Client Documents
 -----------------------------
