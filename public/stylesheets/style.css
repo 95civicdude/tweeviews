@@ -20,7 +20,7 @@ a.fancybox {float: left; width: 300px; margin-top: 20px;}
 
 .tvquicktake {position: absolute; display: block; margin: 100px 0 50px; padding-bottom: 50px; color: #292f33; }
 	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px; display: inline;}
-	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd; display: block; width: auto; margin-top: 20px;}
+	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd; display: block; width: auto; margin-top: 20px; cursor: default;}
 		.tvquicktake .tvtooltip a.tvpreview {margin-top: 0;}
 		.tvtooltip a.fancybox {float: left; width: auto; margin-top: 0; color: #292f33; font-style: normal; font-size: 12px; text-align: left; padding: 5px;}
 			.tvtooltip a.fancybox p {line-height: 18px;}
