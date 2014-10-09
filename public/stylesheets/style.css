@@ -1,8 +1,75 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body {padding: 50px; font: 14px Helvetica, Arial, sans-serif; }
+a {color: #292f33; text-decoration: none; font-style: italic;}
+	a:hover {color: #5ea9dd;}
+
+/** Widget Link **/
+
+img.bird {float: left; margin-right: 5px;}
+.tvlink {padding-top: 0; margin-top: 8px;}
+a.tvboxlink {float: left; width: 300px; margin-top: 20px;}
+
+/** TweeView Lightbox **/
+
+.tvlightbox {display: block; position: absolute; margin-top: 100px; box-shadow: 0 0 4px #666; border-radius: 10px; color: #292f33;}
+	.tvshadow {box-shadow: inset 0 0 20px #ccc; padding: 40px 40px 20px; border-radius: 10px; border: 1px solid #fff;}
+	h2.tvtitle {font-size: 40px; color: #5ea9dd; font-style: italic; margin-top: 0; border-bottom: 4px solid #e1e8ed; padding-bottom: 10px;}
+	img.bigbird {float: left; margin-right: 5px;}
+	.tvlightfoot {border-top: 4px solid #e1e8ed; text-align: right; color: #a7b3bc; font-style: italic; margin-top: 40px;}
+
+/** TweeView Quicktake **/
+
+.tvquicktake {position: absolute; display: block; margin: 450px 0 50px; padding-bottom: 50px; color: #292f33; }
+	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px;}
+	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd;}
+		/*.tvtooltip {display: block;}
+			.tvtooltip p {display: inline; float: left; padding-right: 3px;}*/
+
+.tvtooltip {
+	color: #fff;
+	background-color: rgba( 0, 0, 0, .7);
+	text-shadow: none;
+	font-size: .8em;
+	visibility: hidden;
+	-webkit-border-radius: 7px; 
+	-moz-border-radius: 7px; 
+	-o-border-radius: 7px; 
+	border-radius: 7px;	
+	text-align: center;	
+	opacity: 0;
+	z-index: 999;
+	padding: 3px 8px;	
+	position: absolute;
+	cursor: default;
+	-webkit-transition: all 240ms ease-in-out;
+	-moz-transition: all 240ms ease-in-out;
+	-ms-transition: all 240ms ease-in-out;
+	-o-transition: all 240ms ease-in-out;
+	transition: all 240ms ease-in-out;
+	top: 50%;
+	right: auto;
+	left: 106%;
+	margin-top: -15px;
+	margin-right: auto;	
+	margin-left: auto;	
 }
 
-a {
-  color: #00B7FF;
+.tvtooltip:after{
+	left: -5px;
+	top: 50%;	
+	margin-top: -6px;
+	bottom: auto;
+	border-top-color: transparent;	
+    border-right-color: rgba( 0, 0, 0, .7);	
 }
+
+*:not(.on-focus):hover > .tvtooltip,
+.on-focus input:focus + .tvtooltip{
+	visibility: visible;
+	opacity: 1;
+	-webkit-transition: all 240ms ease-in-out;
+	-moz-transition: all 240ms ease-in-out;
+	-ms-transition: all 240ms ease-in-out;
+	-o-transition: all 240ms ease-in-out;
+	transition: all 240ms ease-in-out;		
+}
+
