@@ -31,3 +31,9 @@ a.fancybox {float: left; width: 300px; margin-top: 20px;}
 *:not(.on-focus):hover > .tvtooltip, .on-focus input:focus + .tvtooltip {visibility: visible;
 	opacity: 1; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out;}
 
+/** TweeView Tweets **/
+
+.tvcontent {width: 900px; margin: auto 0;}
+.tvtweet {display: inline-block; width: 250px; border: 1px solid #fff; background: #edf0f2; box-shadow: 0 0 2px #666; margin: 10px; vertical-align: top; padding: 10px;}
+	.tvtweet span {display: block;}
+		.tvtweet span.tweettext {width: 230px; word-wrap: break-word;}

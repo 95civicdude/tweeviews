@@ -31,11 +31,13 @@
             <p>To be included in TweeViews, tweet to @clientname with
             #productname and your #rating (#5stars, #3stars, etc).</p>
 
+            <div class="tvcontent">
             {{#each Results}}
 
-            <p>[display will go here {{Id}} {{Rating}} {{ReviewText}} {{SubmissionTime}} {{UserNickname}} {{Photos}}</p>
+            <p class="tvtweet"><span class="tweetid">{{Id}}</span> <span class="tweetrate">{{Rating}}</span> <span class="tweettext">{{ReviewText}}</span> <span class="tweettime">{{SubmissionTime}}</span> <span class="tweetname">{{UserNickname}}</span> <span class="tweetphoto">{{Photos}}</span></p>
 
             {{/each}}
+            </div>
 
             <div class="tvlightfoot">
                 <p>Brought to you by Bazaarvoice</p>
