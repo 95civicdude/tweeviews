@@ -1,5 +1,38 @@
 var dbConnection = require("./dbConnection.js");
 var twitter = require("twitter");
+var starRatingRegex = /([1-5])stars?/gi;
+
+var setLastTweetSeen = function(clientName, tweetId) {
+    getClientsCollection(function(clients) {
+        clients.update({
+            "name" : clientName
+        }, {
+            $set : {
+                "lastTweetSeen" : tweetId
+            }
+        }, function(err) {
+            if (err) {
+                throw err;
+            }
+        });
+    });
+};
+
+var getLastTweetSeen = function(clientName, callback) {
+    getClientsCollection(function(clients) {
+        clients.find({
+            "name" : clientName
+        }, function(err, client) {
+            if (err) {
+                throw err;
+            }
+
+            if (client) {
+                callback(client.lastTweetSeen);
+            }
+        });
+    });
+};
 
 var startSearchPoll = function(client) {
     var t = new twitter({
@@ -8,29 +41,46 @@ var startSearchPoll = function(client) {
         "access_token_key": client.accessTokenKey,
         "access_token_secret": client.accessTokenSecret
     });
-    var searchString = "@" + client.twitterHandle + " AND (";
 
     if (client.products && client.products.length) {
-        searchString += client.products[0].hashTag;
+        var hashTagRegexp = null;
+        var hashTagRegexpString = client.products[0].hashTag;
 
         for (var i = 1; i < client.products.length; i++) {
-            searchString += " OR " + client.products[i].hashTag;
+            hashTagRegexpString += "|" + client.products[i].hashTag;
         }
 
-        searchString += ")";
-
-        console.log("searchString=" + searchString);
+        console.log("hashTagRegexpString=" + hashTagRegexpString);
+        hashTagRegexp = new RegExp(hashTagRegexpString, "gi");
 
         setInterval(function() {
-            t.search(searchString, function(data) {
-                if (data.statuses && data.statuses.length) {
-                    console.log(JSON.stringify(data, null, "   "));
+            t.getMentions({}, function(statuses) {
+                console.log("statuses.length=" + statuses.length);
+
+                if (statuses && statuses.length) {
+                    var rating = null;
+                    var productHashTag = null;
+
+                    for (var i = 0; i < statuses.length; i++) {
+                        statusText = statuses[i].text;
+                        rating = starRatingRegex.exec(statusText);
+                        productHashTag = hashTagRegexp.exec(statusText);
+
+                        console.log("rating=" + rating + "|productHashTag=" + productHashTag);
+
+                        if (rating && productHashTag) {
+                            rating = rating[1];
+                            productHashTag = productHashTag[1];
+
+                            console.log("rating=" + rating + "|productHashTag=" + productHashTag);
+                        }
+                    }
                 }
-                console.log(JSON.stringify(data, null, "   "));
+                // console.log(JSON.stringify(statuses, null, "   "));
             });
-        }, 5000);
+        }, 3500);
     }
-}
+};
 
 var start = function() {
     dbConnection.getClientsCollection(function(clients) {

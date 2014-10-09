@@ -471,7 +471,7 @@ Twitter.prototype.getHomeTimeline = function(params, callback) {
 };
 
 Twitter.prototype.getMentions = function(params, callback) {
-	var url = '/statuses/mentions.json';
+	var url = '/statuses/mentions_timeline.json';
 	this.get(url, params, callback);
 	return this;
 };
