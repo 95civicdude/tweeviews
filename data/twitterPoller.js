@@ -3,7 +3,7 @@ var twitter = require("twitter");
 var starRatingRegex = /([1-5])stars?/gi;
 
 var setLastTweetSeen = function(clientName, tweetId) {
-    getClientsCollection(function(clients) {
+    dbConnection.getClientsCollection(function(clients) {
         clients.update({
             "name" : clientName
         }, {
@@ -19,7 +19,7 @@ var setLastTweetSeen = function(clientName, tweetId) {
 };
 
 var getLastTweetSeen = function(clientName, callback) {
-    getClientsCollection(function(clients) {
+    dbConnection.getClientsCollection(function(clients) {
         clients.find({
             "name" : clientName
         }, function(err, client) {
@@ -43,40 +43,56 @@ var startSearchPoll = function(client) {
     });
 
     if (client.products && client.products.length) {
+        var params = {
+            "count" : 10
+        };
+
+        getLastTweetSeen(client.name, function(lastTweetSeen) {
+            if (lastTweetSeen) {
+                params.defineProperty("since_id", String(lastTweetSeen));
+            }
+        });
+
         var hashTagRegexp = null;
-        var hashTagRegexpString = client.products[0].hashTag;
+        var hashTagRegexpString = "(" + client.products[0].hashTag;
 
         for (var i = 1; i < client.products.length; i++) {
             hashTagRegexpString += "|" + client.products[i].hashTag;
         }
 
+        hashTagRegexpString += ")";
         console.log("hashTagRegexpString=" + hashTagRegexpString);
         hashTagRegexp = new RegExp(hashTagRegexpString, "gi");
 
         setInterval(function() {
-            t.getMentions({}, function(statuses) {
+            t.getMentions(params, function(statuses) {
                 console.log("statuses.length=" + statuses.length);
 
                 if (statuses && statuses.length) {
                     var rating = null;
                     var productHashTag = null;
+                    var max_id = params.since_id;
 
                     for (var i = 0; i < statuses.length; i++) {
+                        params.since_id = String(Math.max(Number(params.since_id), Number(statuses[i].id)));
                         statusText = statuses[i].text;
                         rating = starRatingRegex.exec(statusText);
                         productHashTag = hashTagRegexp.exec(statusText);
 
-                        console.log("rating=" + rating + "|productHashTag=" + productHashTag);
-
                         if (rating && productHashTag) {
                             rating = rating[1];
                             productHashTag = productHashTag[1];
-
-                            console.log("rating=" + rating + "|productHashTag=" + productHashTag);
                         }
+
+                        max_id = Stirng(Math.min(Number(max_id), Number(statuses[i].id));
                     }
+
+                    if (max_id) {
+                        params.defineProperty("max_id", max_id);
+                    }
+
+                    setLastTweetSeen(client.name, since_id);
                 }
-                // console.log(JSON.stringify(statuses, null, "   "));
             });
         }, 3500);
     }
