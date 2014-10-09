@@ -5,13 +5,7 @@ block content
   p Welcome to #{title}
   h2  hello there
   #inline(style='display:none;width:500px')
-     p testingggg
-  a(class='fancybox', rel='group', href='#inline')
-     p testing 134
-  a.tvboxlink(href='http://twitter.com/tshacktoberfest')
-        img.bird(src='images/smallbird.png', alt='HACK THE PLANET')
-        p.tvlink See what they’re saying on Twitter!
-  div.tvlightbox
+     div.tvlightbox
      div.tvshadow
         img.bigbird(src='images/bigbird.png', alt='TweeViews')
         h2.tvtitle TweeViews
@@ -19,6 +13,9 @@ block content
         p [display will go here]
         div.tvlightfoot
            p Brought to you by Bazaarvoice
+  a(class='fancybox', rel='group', href='#inline')
+     img.bird(src='images/smallbird.png', alt='HACK THE PLANET')
+     p.tvlink See what they’re saying on Twitter!
   div.tvquicktake
      img.bigbird(src='images/bigbird.png', alt='TweeViews')
      h2.tvqttitle TweeViews

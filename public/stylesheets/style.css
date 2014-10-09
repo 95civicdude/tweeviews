@@ -6,7 +6,7 @@ a {color: #292f33; text-decoration: none; font-style: italic;}
 
 img.bird {float: left; margin-right: 5px;}
 .tvlink {padding-top: 0; margin-top: 8px;}
-a.tvboxlink {float: left; width: 300px; margin-top: 20px;}
+a.fancybox {float: left; width: 300px; margin-top: 20px;}
 
 /** TweeView Lightbox **/
 
@@ -18,9 +18,9 @@ a.tvboxlink {float: left; width: 300px; margin-top: 20px;}
 
 /** TweeView Quicktake **/
 
-.tvquicktake {position: absolute; display: block; margin: 450px 0 50px; padding-bottom: 50px; color: #292f33; }
-	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px;}
-	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd;}
+.tvquicktake {position: absolute; display: block; margin: 100px 0 50px; padding-bottom: 50px; color: #292f33; }
+	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px; display: inline;}
+	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd; display: block; margin-top: 20px; width: auto;}
 		/*.tvtooltip {display: block;}
 			.tvtooltip p {display: inline; float: left; padding-right: 3px;}*/
 
