@@ -4,7 +4,27 @@ block content
   h1= title
   p Welcome to #{title}
   h2  hello there
-  #inline(style='display:none;width:500px')
+  #inline3(style='display:none;')
+     div.tvlightbox
+     div.tvshadow
+        img.bigbird(src='images/bigbird.png', alt='TweeViews')
+        h2.tvtitle TweeViews
+        p To be included in TweeViews, tweet to @clientname with #productname and your #rating (#5stars, #3stars, etc).
+        p [third display set will go here]
+        div.tvlightfoot
+           p Brought to you by Bazaarvoice
+  a(class='fancybox', rel='group', href='#inline3')
+  #inline2(style='display:none;')
+     div.tvlightbox
+     div.tvshadow
+        img.bigbird(src='images/bigbird.png', alt='TweeViews')
+        h2.tvtitle TweeViews
+        p To be included in TweeViews, tweet to @clientname with #productname and your #rating (#5stars, #3stars, etc).
+        p [second display set will go here]
+        div.tvlightfoot
+           p Brought to you by Bazaarvoice
+  a(class='fancybox', rel='group', href='#inline2')
+  #inline(style='display:none;')
      div.tvlightbox
      div.tvshadow
         img.bigbird(src='images/bigbird.png', alt='TweeViews')
@@ -19,10 +39,12 @@ block content
   div.tvquicktake
      img.bigbird(src='images/bigbird.png', alt='TweeViews')
      h2.tvqttitle TweeViews
-     a.tvpreview(href='/')
+     a.tvpreview(href='/display')
         p [display will go here]
            div.tvtooltip
-              p Read more reviews from other Twitter users on TweeViews >>
+              a(class='fancybox', rel='group', href='#inline')
+                 p.tvtooltext Read more reviews from other Twitter users on
+                    span.tvtoolbold TweeViews >>
   div.BVTweeviews(data-id="test1")
   script.
     $(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
