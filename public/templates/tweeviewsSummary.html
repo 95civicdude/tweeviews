@@ -21,10 +21,11 @@
 	{{/each}}
 </div> -->
 <div class="BVTweeviewContainer">
+    {{#each Results}}
     <div id="inline" style="display:none;">
         <div class="tvlightbox"></div>
 
-        <div class="tvshadow">
+        <div class="tvshadow_{{Id}}">
             <img alt="TweeViews" class="bigbird" src="images/bigbird.png">
 
             <h2 class="tvtitle">TweeViews</h2>
@@ -39,6 +40,7 @@
             </div>
         </div>
     </div>
+    {{/each}}
 
     <a class="fancybox" href="#inline" rel="group"><img alt=
     "HACK THE PLANET" class="bird" src="images/smallbird.png">
