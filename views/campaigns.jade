@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    div
+        form(action='/campaigns/create', method='post')
+            div#clientNameDiv(data-role='fieldcontain')
+                fieldset(data-role='controlgroup')
+                    label(for='clientName') Client Name
+                        input(id='clientName',type='text',value='',placeholder='jeffs-testcompany',name='clientName')
+            div#hashTagDiv(data-role='fieldcontain')
+                fieldset(data-role='controlgroup')
+                    label(for='hashTag') Product Hashtag
+                        input(id='hashTag',type='text',value='',placeholder='#wutwut',name='hashTag')
+            div#externalIdDiv(data-role='fieldcontain')
+                fieldset(data-role='controlgroup')
+                    label(for='externalId') Product ID
+                        input(id='externalId',type='text',value='',placeholder='externalId',name='externalId')
+            div(data-role='fieldcontain')
+                input(type='submit',value='Start Tweeting',data-transition='fade', data-theme='c')

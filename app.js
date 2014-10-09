@@ -5,6 +5,7 @@
 
 var express = require('express');
 var routes = require('./routes');
+var campaigns = require('./routes/campaigns');
 var clients = require('./routes/clients');
 var user = require('./routes/user');
 var http = require('http');
@@ -33,31 +34,45 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/display', routes.display);
 app.get('/clients', clients.display);
+app.get('/campaigns', campaigns.display);
 
 app.post('/clients/create', clients.create);
-app.post('/createCampaign', function(req, res) {
-    var MongoClient = require('mongodb').MongoClient;
+app.post('/campaigns/create', campaigns.create);
 
-    // Use connect method to connect to the Server
-    MongoClient.connect('mongodb://localhost:27017/tweeviews', function(err, db) {
-      var collection = db.collection('clients');
+// app.post('/createCampaign', function(req, res) {
+//     var MongoClient = require('mongodb').MongoClient;
 
-      collection.update({ 'client' : 'jeffs-testcompany' }, {
-        $addToSet : { "products" : {
-            "external_id" : req.body.productid,
-            "hash_tag" : req.body.producthash
-        }}
-      }, function(err, result) {
-        if (err) {
-            throw err;
-        }
-        db.close();
-      });
-    });
+//     // Use connect method to connect to the Server
+//     MongoClient.connect('mongodb://localhost:27017/tweeviews', function(err, db) {
+//       var collection = db.collection('clients');
 
-    res.render('display', {});
+//       collection.update({ 'client' : 'jeffs-testcompany' }, {
+//         $addToSet : { "products" : {
+//             "external_id" : req.body.productid,
+//             "hash_tag" : req.body.producthash
+//         }}
+//       }, function(err, result) {
+//         if (err) {
+//             throw err;
+//         }
+//         db.close();
+//       });
+//     });
+
+//     res.render('display', {});
+// });
+
+process.on('SIGINT', function() {
+  process.exit();
+});
+process.on('exit', function() {
+    var dbConnection = require('./data/dbConnection.js');
+
+    dbConnection.closeDbConnection();
 });
 
+require('./data/twitterPoller.js').start();
+
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });
