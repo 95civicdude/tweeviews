@@ -33,8 +33,12 @@
 
             <div class="tvcontent">
             {{#each Results}}
-
-            <p class="tvtweet"><span class="tweetid">{{Id}}</span> <span class="tweetrate">{{Rating}}</span> <span class="tweettext">{{ReviewText}}</span> <span class="tweettime">{{SubmissionTime}}</span> <span class="tweetname">{{UserNickname}}</span> <span class="tweetphoto">{{Photos}}</span></p>
+            <div class="tvtweet">
+           	<div class="BVRRRatingNormalImage" style="position: relative; display: inline-block;">
+				<div class="BVFWRatingBackground">{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</div>
+				<div class="BVFRWRating" style="overflow: hidden; width: {{rangeToPercentage Rating 5}}%;">{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</div>
+			</div>
+            <span class="tweetid">{{Id}}</span> <span class="tweetrate">{{Rating}}</span> <span class="tweettext">{{ReviewText}}</span> <span class="tweettime">{{SubmissionTime}}</span> <span class="tweetname">{{UserNickname}}</span> <span class="tweetphoto">{{Photos}}</span></div>
 
             {{/each}}
             </div>
