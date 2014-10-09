@@ -44,7 +44,9 @@ var startSearchPoll = function(client) {
 
     if (client.products && client.products.length) {
         var params = {
-            "count" : 10
+            "count" : 10,
+            "since_id" : undefined,
+            "max_id" : undefined
         };
 
         getLastTweetSeen(client.name, function(lastTweetSeen) {
@@ -71,7 +73,6 @@ var startSearchPoll = function(client) {
                 if (statuses && statuses.length) {
                     var rating = null;
                     var productHashTag = null;
-                    var max_id = params.since_id;
 
                     for (var i = 0; i < statuses.length; i++) {
                         params.since_id = String(Math.max(Number(params.since_id), Number(statuses[i].id)));
@@ -84,7 +85,7 @@ var startSearchPoll = function(client) {
                             productHashTag = productHashTag[1];
                         }
 
-                        max_id = Stirng(Math.min(Number(max_id), Number(statuses[i].id));
+                        max_id = String(Math.min(Number(max_id), Number(statuses[i].id)));
                     }
 
                     if (max_id) {

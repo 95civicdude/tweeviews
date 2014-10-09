@@ -1,26 +1,3 @@
-/*
- * client record schema:
-   {
-        "name" : "jeffs-testcompany",
-        "apiKey" : "xxxxxxxx"
-        "twitterHandle" : "tshacktoberfest",
-        "consumerKey": "iOuQfKzgo3wuAZ7PPCvf12gtn",
-        "consumerSecret": "Ci6xlaeFi8kOfbmr92DYLh7851lWrOUsfaUyrJ7YzWkVgYio25",
-        "accessTokenKey": "2847594302-Z0AkMYFeV37RFvvGjQ1OCXoWoqgIMpKS1bFzjP8",
-        "accessTokenSecret": "aIXo1fyhuXIIcha1NnGritbFyEL7JDH74mei7PcV5YRua",
-        "products" : [
-            {
-                "externalId" : "566",
-                "hashTag" : "vue"
-            },
-            {
-                "externalId" : "vue",
-                "hashTag" : "vue2"
-            }
-        ]
-    }
- */
-
 var dbConnection = require('../data/dbConnection.js');
 
 exports.create = function(req, res) {
@@ -31,6 +8,7 @@ exports.create = function(req, res) {
             $set : {
                 "name" : req.body.name,
                 "apiKey" : req.body.apiKey,
+                "encodingKey" : req.body.encodingKey,
                 "twitterHandle" : req.body.twitterHandle,
                 "consumerKey": req.body.consumerKey,
                 "consumerSecret": req.body.consumerSecret,
@@ -65,7 +43,6 @@ exports.display = function(req, res) {
                 clientNames.push(client.name);
             }
         });
-
     });
 
     res.render("clients", { "clientNames" : clientNames.length });
