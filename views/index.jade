@@ -3,13 +3,13 @@ extends layout
 block content
 	div
 		form(action='/createCampaign',method='post')
-			div#productHashDiv(data-role='fieldcontain')
-				fieldset(data-role='controlgroup')
-					label(for='producthash') Product Hashtag
-						input(id='producthash',type='text',value='',placeholder='#wutwut',name='producthash')
 			div#productIdDiv(data-role='fieldcontain')
 				fieldset(data-role='controlgroup')
 					label(for='productid') Product ID
 						input(id='productid',type='text',value='',placeholder='productid',name='productid')
+			div#productHashDiv(data-role='fieldcontain')
+				fieldset(data-role='controlgroup')
+					label(for='producthash') Product Hashtag
+						input(id='producthash',type='text',value='',placeholder='#wutwut',name='producthash')
 			div(data-role='fieldcontain')   
 				input(type='submit',value='Start Tweeting',data-transition='fade', data-theme='c')
