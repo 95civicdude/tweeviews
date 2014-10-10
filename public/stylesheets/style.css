@@ -20,6 +20,9 @@ form.tvclients {padding: 30px; width: 330px;}
 	form.tvclients fieldset label {display: block;}
 		form.tvclients fieldset label input {margin-left: 10px;}
 
+.listcampaigns ul {margin-left: 0; padding-left: 5px; list-style: none;}
+.listcampaigns ul p {font-weight: bold; border-bottom: 2px solid #e1e8ed; padding-bottom: 10px;}
+
 /** Widget Link **/
 
 img.bird {float: left; margin-right: 5px;}
