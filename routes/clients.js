@@ -2,6 +2,12 @@ var dbConnection = require('../data/dbConnection.js');
 
 exports.create = function(req, res) {
     dbConnection.getClientsCollection(function(clients) {
+        var twitterHandle = req.body.twitterHandle;
+
+        if (twitterHandle[0] === "@") {
+            twitterHandle = twitterHandle.substr(1);
+        }
+
         clients.update({
             "name" : req.body.name
         }, {
@@ -9,7 +15,7 @@ exports.create = function(req, res) {
                 "name" : req.body.name,
                 "apiKey" : req.body.apiKey,
                 "encodingKey" : req.body.encodingKey,
-                "twitterHandle" : req.body.twitterHandle,
+                "twitterHandle" : twitterHandle,
                 "consumerKey": req.body.consumerKey,
                 "consumerSecret": req.body.consumerSecret,
                 "accessTokenKey": req.body.accessTokenKey,

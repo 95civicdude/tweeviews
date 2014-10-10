@@ -1,6 +1,13 @@
 var dbConnection = require("./dbConnection.js");
 var twitter = require("twitter");
-var starRatingRegex = /([1-5])stars?/gi;
+var starRatingRegex = /#(([1-5]|one|two|three|four|five)stars?)[\s#]*/i;
+var ratingStringToNumber = {
+    "one" : 1,
+    "two" : 2,
+    "three" : 3,
+    "four" : 4,
+    "five" : 5
+};
 
 var setLastTweetSeen = function(clientName, tweetId) {
     dbConnection.getClientsCollection(function(clients) {
@@ -22,78 +29,136 @@ var getLastTweetSeen = function(clientName, callback) {
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
             "name" : clientName
-        }, function(err, client) {
+        }).toArray(function(err, docs) {
             if (err) {
                 throw err;
             }
 
-            if (client) {
-                callback(client.lastTweetSeen);
+            if (docs && docs.length) {
+                callback(docs[0].lastTweetSeen);
             }
         });
     });
 };
 
-var startSearchPoll = function(client) {
-    var t = new twitter({
-        "consumer_key": client.consumerKey,
-        "consumer_secret": client.consumerSecret,
-        "access_token_key": client.accessTokenKey,
-        "access_token_secret": client.accessTokenSecret
-    });
+var getProductIds = function(clientName, callback) {
+    console.log("getProductIds(" + clientName + ")");
 
-    if (client.products && client.products.length) {
-        var params = {
-            "count" : 10,
-            "since_id" : undefined,
-            "max_id" : undefined
-        };
+    dbConnection.getClientsCollection(function(clients) {
+        clients.find({
+            "name" : clientName
+        }).toArray(function(err, docs) {
+            if (err) {
+                throw err;
+            }
+
+            if (docs && docs.length) {
+                var client = docs[0];
+
+                if (client.products && client.products.length) {
+                    var productIds = [];
+
+                    for (var i = 0; i < client.products.length; i++) {
+                        productIds[client.products[i].hashTag] = client.products[i].externalId;
+                    };
+
+                    callback(productIds);
+                }
+            }
+        });
+    });
+};
+
+var buildProductHashTagRegexp = function(products) {
+    var hashTagRegexp =  "(" + products[0].hashTag;
+
+    for (var i = 1; i < products.length; i++) {
+        hashTagRegexp += "|" + products[i].hashTag;
+    }
+
+    hashTagRegexp += ")";
+
+    return new RegExp(hashTagRegexp, "i");
+};
+
+var convertRatinStringToNumber = function(rating) {
+    if (isNaN(rating)) {
+        rating = ratingStringToNumber[rating];
+    }
+
+    return String(rating);
+};
+
+var submitReview = function(clientInfo, review) {
+    // TODO
+    console.log("submitReview()");
+    console.log(JSON.stringify(review, null, "   "));
+};
+
+var submitReview2 = function(client, status, productId, rating) {
+    var review = {
+        "userid" : String(status.user.id),
+        "usernickname" : "@" + status.user.screen_name,
+        "productid" : productId,
+        "rating" : rating,
+        "reviewtext" : status.text
+    };
+
+    if (status.user.location) {
+        review.location = status.user.location;
+    }
+
+    if (status.user.profile_image_url) {
+        review.thirdpartyphotourl_1 = status.user.profile_image_url;
+    }
+
+    submitReview(client, review);
+};
+
+var startSearchPoll = function(client) {
+    if (client.consumerKey && client.consumerSecret && client.accessTokenKey && client.accessTokenSecret && client.products && client.products.length) {
+        var t = new twitter({
+            "consumer_key": client.consumerKey,
+            "consumer_secret": client.consumerSecret,
+            "access_token_key": client.accessTokenKey,
+            "access_token_secret": client.accessTokenSecret
+        });
+
+        var sinceIdRegexp = /\?since_id=([0-9]+).+/;
+        var hashTagRegexp = buildProductHashTagRegexp(client.products);
+        var statuses = null;
+        var rating = null;
+        var productHashTag = null;
+        var review = null;
+        var searchParams = {};
 
         getLastTweetSeen(client.name, function(lastTweetSeen) {
             if (lastTweetSeen) {
-                params.defineProperty("since_id", String(lastTweetSeen));
+                searchParams.since_id = String(lastTweetSeen);
             }
         });
 
-        var hashTagRegexp = null;
-        var hashTagRegexpString = "(" + client.products[0].hashTag;
-
-        for (var i = 1; i < client.products.length; i++) {
-            hashTagRegexpString += "|" + client.products[i].hashTag;
-        }
-
-        hashTagRegexpString += ")";
-        console.log("hashTagRegexpString=" + hashTagRegexpString);
-        hashTagRegexp = new RegExp(hashTagRegexpString, "gi");
-
         setInterval(function() {
-            t.getMentions(params, function(statuses) {
-                console.log("statuses.length=" + statuses.length);
+            getProductIds(client.name, function(productIds) {
+                t.search("@" + client.twitterHandle, searchParams, function(results) {
+                    if (results && results.statuses && results.statuses.length) {
+                        statuses = results.statuses;
 
-                if (statuses && statuses.length) {
-                    var rating = null;
-                    var productHashTag = null;
+                        for (var i = 0; i < statuses.length; i++) {
+                            statusText = statuses[i].text;
+                            productHashTag = hashTagRegexp.exec(statusText);
+                            rating = starRatingRegex.exec(statusText);
 
-                    for (var i = 0; i < statuses.length; i++) {
-                        params.since_id = String(Math.max(Number(params.since_id), Number(statuses[i].id)));
-                        statusText = statuses[i].text;
-                        rating = starRatingRegex.exec(statusText);
-                        productHashTag = hashTagRegexp.exec(statusText);
-
-                        if (rating && productHashTag) {
-                            rating = rating[1];
-                            productHashTag = productHashTag[1];
+                            if(productHashTag && rating) {
+                                submitReview2(client, statuses[i], productIds[productHashTag[1]], convertRatinStringToNumber(rating[2]));
+                            }
                         }
 
-                        max_id = String(Math.min(Number(max_id), Number(statuses[i].id)));
+                        // TODO uncomment!
+                        // searchParams.since_id = sinceIdRegexp.exec(results.search_metadata.refresh_url)[1];
+                        // setLastTweetSeen(client.name, searchParams.since_id);
                     }
-
-                    if (max_id) {
-                        params.defineProperty("max_id", max_id);
-                    }
-
-                    setLastTweetSeen(client.name, since_id);
-                }
+                });
             });
         }, 3500);
     }
