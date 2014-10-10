@@ -4,7 +4,7 @@ exports.list = function(req, res) {
     var clientName = req.body.clientName;
     var hashTags = [];
 
-    console.log("clientName=" + clientName);
+    //console.log("clientName=" + clientName);
 
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
@@ -14,12 +14,12 @@ exports.list = function(req, res) {
                 throw err;
             }
 
-            console.log("docs.length=" + docs.length);
+            //console.log("docs.length=" + docs.length);
 
             if (docs && docs.length) {
                 var client = docs[0];
 
-                console.log("client.products=" + client.products);
+                //console.log("client.products=" + client.products);
 
                 if (client.products) {
                     for (var i=0; i<client.products.length; i++) {
@@ -28,8 +28,8 @@ exports.list = function(req, res) {
                 }
             }
 
-            console.log("hashTags.length=" + hashTags.length);
-            res.render("campaigns", {"hashTags" : hashTags});
+            //console.log("hashTags.length=" + hashTags.length);
+            res.render("campaigns", {"hashTags" : hashTags});       // Send back the list of hashtags for display
         })
     });
 };
