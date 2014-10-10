@@ -1,6 +1,7 @@
 body {padding: 50px 50px 0; font: 14px Helvetica, Arial, sans-serif; background: url('/images/bj_bg.png') no-repeat 0 0; margin: auto 0; height: 8674px;}
 a {color: #292f33; text-decoration: none; font-style: italic;}
 	a:hover {color: #5ea9dd;}
+form {margin-top: 110px;}
 
 /** Widget Link **/
 
@@ -24,7 +25,7 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 1000px;}
 		.tvquicktake .tvtweet .tweettext {color: #292f33;}
 		.tvquicktake .tvtweet a {color: #5ea9dd; font-style: normal; padding: 5px 0; display: block;}
 		.tvquicktake .tvtooltip a.tvpreview {margin-top: 0;}
-		.tvtooltip a.fancybox {float: left; width: auto; margin: 0 0 0 0; color: #292f33; font-style: normal; font-size: 12px; text-align: left; padding: 5px 5px 5px 5px;}
+		.tvtooltip a.fancybox {float: left; width: auto; margin: 0 0 0 0; color: #292f33; font-style: normal; font-size: 14px; text-align: left; padding: 5px 5px 5px 5px;}
 			.tvtooltip a.fancybox p {line-height: 18px;}
 				.tvtooltip a.fancybox p.tvtooltext span {font-weight: bold; color: #5ea9dd; padding-left: 3px;}
 
