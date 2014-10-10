@@ -20,22 +20,6 @@ exports.index = function(req, res){
 	});
 };
 
-exports.postReview = function(clientInfo, reviewData){
-  	var bvsubmit = require('bvsubmit');
-
-  	var reviewDataObject = {
-  		rating: reviewData.rating,
-  		reviewtext: reviewData.reviewtext, 
-  		usernickname: reviewData.usernickname,
-  		location: reviewData.location
-  	};
-
-  	var postString = bvsubmit.buildQuery(clientInfo, 'stg', reviewData);
-  	console.log("Posting Query String: ", postString);
-
-  	bvsubmit.submitQuery(postString, reviewDataObject);
-}
-
 exports.display = function(req, res){
   	res.render('display', {});
 };
