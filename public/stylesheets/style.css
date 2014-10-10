@@ -44,7 +44,7 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 950px;}
 		.tvtweet span.tweettext {width: 230px; word-wrap: break-word; line-height: 20px;}
 	.tvtweet .BVFWRatingBackground {display: block; background: url('/images/starRating_unfilled.png') no-repeat 0 0; height: 25px; width: 138px; position: absolute; z-index: 400;}
 		.tvtweet .BVFWRatingBackground p {display: none;}
-	.tvtweet .BVRRRatingNormalImage {width: 138px;}
+	.tvtweet .BVRRRatingNormalImage {width: 127px;}
 	.tvtweet .BVFRWRating {display: block; background: url('/images/starRating.png') no-repeat 0 0; height: 25px; z-index: 999; position: relative;}
 	.tvtweet .tweetid, .tvtweet .tweetrate {display: none;}
 	.tvtweet .tweettext {padding: 10px 0; font-size: 16px;}
