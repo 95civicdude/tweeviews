@@ -20,7 +20,7 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 950px;}
 
 /** TweeView Quicktake **/
 
-.tvquicktake {position: absolute; display: block; margin: 3090px 0 50px 90px; padding-bottom: 50px; color: #292f33; width: 700px;}
+.tvquicktake {position: absolute; display: block; margin: 3090px 0 50px 90px; padding-bottom: 50px; color: #292f33; width: auto;}
 	.tvqttitle {margin-bottom: 20px; display: block;}
 	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px; display: inline;}
 	.tvquicktake a.tvpreview {font-style: normal; color: #292f33; display: block; width: auto; cursor: default;}
