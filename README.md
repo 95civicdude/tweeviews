@@ -15,6 +15,8 @@ EXTERNAL DEPENDENCIES
     > mongod --dbpath /path/to/some/db/dir --smallfiles
     ```
 
+    *DO NOT* create the db directory in the same folder as this project! Database files should never be committed to source control.
+
 CLIENT RECORD SCHEMA
 ====================
 The db is named `tweeviews` and the collection is named `clients`. The documents in the collection look like this:
