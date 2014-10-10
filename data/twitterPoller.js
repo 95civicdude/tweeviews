@@ -125,7 +125,7 @@ var startSearchPoll = function(client) {
 
         setInterval(function() {
             getProductIds(client.name, function(productIds) {
-                t.search("@" + client.twitterHandle, searchParams, function(results) {
+                t.search("@" + client.twitterHandle + " +exclude:retweets", searchParams, function(results) {
                     if (results && results.statuses && results.statuses.length) {
                         var hashTags = null;
                         var productId = null;
