@@ -73,7 +73,7 @@ var getProductIds = function(clientName, callback) {
                     var productIds = [];
 
                     for (var i = 0; i < client.products.length; i++) {
-                        productIds[client.products[i].hashTag.substr(1)] = client.products[i].externalId;
+                        productIds[client.products[i].hashTag.substr(1).toLowerCase()] = client.products[i].externalId;
                     };
 
                     callback(productIds);
