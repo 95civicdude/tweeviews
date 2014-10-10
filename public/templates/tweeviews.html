@@ -28,9 +28,9 @@
         "/display">
         {{#each Results}}
             <div class="tvtweet">
-           	<div class="BVRRRatingNormalImage" style="position: relative; display: inline-block;">
+           	<div class="BVRRRatingNormalImage" style="position: relative; display: block;">
 				<div class="BVFWRatingBackground"><p>{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</p></div>
-				<div class="BVFRWRating" style="overflow: hidden; width: {{rangeToPercentage Rating 5}}%;"><p style="display: none;">{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</p></div>
+				<div class="BVFRWRating" style="overflow: hidden; width: {{rangeToPercentage Rating 5}}%;"></div>
 			</div>
             <span class="tweetid">{{Id}}</span> <span class="tweetrate">{{Rating}}</span> <span class="tweettext">{{ReviewText}}</span> <span class="tweetname"><a href="https://twitter.com/{{UserNickname}}">{{UserNickname}}</a></span> <span class="tweetphoto">{{Photos}}</span> <span class="tweettime">{{SubmissionTime}}</span></div>
 

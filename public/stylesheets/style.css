@@ -31,7 +31,7 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 950px;}
 			.tvtooltip a.fancybox p {line-height: 18px;}
 				.tvtooltip a.fancybox p.tvtooltext span {font-weight: bold; color: #5ea9dd; padding-left: 3px;}
 
-.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #666; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; top: 100px}
+.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #999; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; top: 100px}
 
 *:not(.on-focus):hover > .tvtooltip, .on-focus input:focus + .tvtooltip {visibility: visible;
 	opacity: 1; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out;}
@@ -39,12 +39,13 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 950px;}
 /** TweeView Tweets **/
 
 .tvcontent {width: 900px; margin: auto 0;}
-.tvtweet {display: inline-block; width: 250px; border: 1px solid #fff; background: #edf0f2; box-shadow: 0 0 2px #666; margin: 10px; vertical-align: top; padding: 15px 10px; color: #292f33;}
+.tvtweet {display: inline-block; width: 250px; border: 1px solid #fff; background: #edf0f2; box-shadow: 0 0 2px #666; margin: 10px; vertical-align: top; padding: 15px 10px; color: #292f33; min-height: 170px;}
 	.tvtweet span {display: block;}
 		.tvtweet span.tweettext {width: 230px; word-wrap: break-word; line-height: 20px;}
 	.tvtweet .BVFWRatingBackground {display: block; background: url('/images/starRating_unfilled.png') no-repeat 0 0; height: 25px; width: 138px; position: absolute; z-index: 400;}
 		.tvtweet .BVFWRatingBackground p {display: none;}
-	.tvtweet .BVFRWRating {display: block; background: url('/images/starRating.png') no-repeat 0 0; height: 25px; width: 138px !important; z-index: 999; position: relative;}
+	.tvtweet .BVRRRatingNormalImage {width: 138px;}
+	.tvtweet .BVFRWRating {display: block; background: url('/images/starRating.png') no-repeat 0 0; height: 25px; z-index: 999; position: relative;}
 	.tvtweet .tweetid, .tvtweet .tweetrate {display: none;}
 	.tvtweet .tweettext {padding: 10px 0; font-size: 16px;}
 	.tvtweet .tweetname a {color: #5ea9dd; font-size: 16px; padding: 5px 0; font-style: normal; display: block;}
