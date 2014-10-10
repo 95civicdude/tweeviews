@@ -1,4 +1,5 @@
-body {padding: 50px 50px 0; font: 14px Helvetica, Arial, sans-serif; background: url('/images/bj_bg.png') no-repeat 0 0; margin: auto 0; height: 6070px;}
+body {font: 14px Helvetica, Arial, sans-serif; padding: 0; margin: 0;}
+.BVTweeViews {padding: 50px 50px 0; font: 14px Helvetica, Arial, sans-serif; background: url('/images/bj_bg.png') no-repeat 0 0; margin: auto 0; height: 6070px;}
 a {color: #292f33; text-decoration: none; font-style: italic;}
 	a:hover {color: #5ea9dd;}
 form {margin-top: 110px;}
