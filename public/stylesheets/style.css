@@ -6,7 +6,7 @@ a {color: #292f33; text-decoration: none; font-style: italic;}
 
 img.bird {float: left; margin-right: 5px;}
 .tvlink {padding-top: 0; margin-top: 8px;}
-a.tvboxlink {float: left; width: 300px; margin-top: 20px;}
+a.fancybox {float: left; width: 300px; margin-top: 20px;}
 
 /** TweeView Lightbox **/
 
@@ -18,58 +18,22 @@ a.tvboxlink {float: left; width: 300px; margin-top: 20px;}
 
 /** TweeView Quicktake **/
 
-.tvquicktake {position: absolute; display: block; margin: 450px 0 50px; padding-bottom: 50px; color: #292f33; }
-	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px;}
-	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd;}
-		/*.tvtooltip {display: block;}
-			.tvtooltip p {display: inline; float: left; padding-right: 3px;}*/
+.tvquicktake {position: absolute; display: block; margin: 100px 0 50px; padding-bottom: 50px; color: #292f33; }
+	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px; display: inline;}
+	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd; display: block; width: auto; margin-top: 20px; cursor: default;}
+		.tvquicktake .tvtooltip a.tvpreview {margin-top: 0;}
+		.tvtooltip a.fancybox {float: left; width: auto; margin-top: 0; color: #292f33; font-style: normal; font-size: 12px; text-align: left; padding: 5px;}
+			.tvtooltip a.fancybox p {line-height: 18px;}
+				.tvtooltip a.fancybox p.tvtooltext span {font-weight: bold; color: #5ea9dd; padding-left: 3px;}
 
-.tvtooltip {
-	color: #fff;
-	background-color: rgba( 0, 0, 0, .7);
-	text-shadow: none;
-	font-size: .8em;
-	visibility: hidden;
-	-webkit-border-radius: 7px; 
-	-moz-border-radius: 7px; 
-	-o-border-radius: 7px; 
-	border-radius: 7px;	
-	text-align: center;	
-	opacity: 0;
-	z-index: 999;
-	padding: 3px 8px;	
-	position: absolute;
-	cursor: default;
-	-webkit-transition: all 240ms ease-in-out;
-	-moz-transition: all 240ms ease-in-out;
-	-ms-transition: all 240ms ease-in-out;
-	-o-transition: all 240ms ease-in-out;
-	transition: all 240ms ease-in-out;
-	top: 50%;
-	right: auto;
-	left: 106%;
-	margin-top: -15px;
-	margin-right: auto;	
-	margin-left: auto;	
-}
+.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #666; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; padding-top: 0;}
 
-.tvtooltip:after{
-	left: -5px;
-	top: 50%;	
-	margin-top: -6px;
-	bottom: auto;
-	border-top-color: transparent;	
-    border-right-color: rgba( 0, 0, 0, .7);	
-}
+*:not(.on-focus):hover > .tvtooltip, .on-focus input:focus + .tvtooltip {visibility: visible;
+	opacity: 1; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out;}
 
-*:not(.on-focus):hover > .tvtooltip,
-.on-focus input:focus + .tvtooltip{
-	visibility: visible;
-	opacity: 1;
-	-webkit-transition: all 240ms ease-in-out;
-	-moz-transition: all 240ms ease-in-out;
-	-ms-transition: all 240ms ease-in-out;
-	-o-transition: all 240ms ease-in-out;
-	transition: all 240ms ease-in-out;		
-}
+/** TweeView Tweets **/
 
+.tvcontent {width: 900px; margin: auto 0;}
+.tvtweet {display: inline-block; width: 250px; border: 1px solid #fff; background: #edf0f2; box-shadow: 0 0 2px #666; margin: 10px; vertical-align: top; padding: 10px;}
+	.tvtweet span {display: block;}
+		.tvtweet span.tweettext {width: 230px; word-wrap: break-word;}

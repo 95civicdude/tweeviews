@@ -22,16 +22,20 @@
 	top: 0;
 	left: 0;
 	z-index: 8020;
+	width: auto !important;
+	height: auto !important;
 }
 
 .fancybox-skin {
 	position: relative;
 	background: #f9f9f9;
-	color: #444;
+	color: #292f33;
 	text-shadow: none;
-	-webkit-border-radius: 4px;
-	   -moz-border-radius: 4px;
-	        border-radius: 4px;
+	padding: 0 !important;
+	margin-bottom: 20px;
+	-webkit-border-radius: 10px;
+	   -moz-border-radius: 10px;
+	        border-radius: 10px;
 }
 
 .fancybox-opened {
@@ -50,7 +54,11 @@
 
 .fancybox-inner {
 	overflow: hidden;
+	width: 100% !important;
+	height: auto !important;
 }
+
+.fancybox-inner #inline {width: 100% !important;}
 
 .fancybox-type-iframe .fancybox-inner {
 	-webkit-overflow-scrolling: touch;
@@ -76,7 +84,7 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-	background-image: url('fancybox_sprite.png');
+	background-image: url('fancybox_sprite.png'); display: none;
 }
 
 #fancybox-loading {
@@ -99,8 +107,8 @@
 
 .fancybox-close {
 	position: absolute;
-	top: -18px;
-	right: -18px;
+	top: -12px;
+	right: -10px;
 	width: 36px;
 	height: 36px;
 	cursor: pointer;
@@ -110,13 +118,14 @@
 .fancybox-nav {
 	position: absolute;
 	top: 0;
-	width: 40%;
+	width: 10%;
 	height: 100%;
 	cursor: pointer;
 	text-decoration: none;
 	background: transparent url('blank.gif'); /* helps IE */
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	z-index: 8040;
+	display: none;
 }
 
 .fancybox-prev {
@@ -139,12 +148,12 @@
 }
 
 .fancybox-prev span {
-	left: 10px;
+	left: 2px;
 	background-position: 0 -36px;
 }
 
 .fancybox-next span {
-	right: 10px;
+	right: 2px;
 	background-position: 0 -72px;
 }
 
