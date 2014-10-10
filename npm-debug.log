@@ -1,6 +1,6 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@2.0.2
+2 info using npm@2.1.2
 3 info using node@v0.10.32
 4 verbose node symlink /usr/local/bin/node
 5 verbose run-script [ 'prestart', 'start', 'poststart' ]
@@ -15,11 +15,11 @@
 10 verbose stack     at maybeClose (child_process.js:756:16)
 10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:823:5)
 11 verbose pkgid tweeviews@0.0.1
-12 verbose cwd /Users/jeremy.love/Documents/dev/tweeviews
+12 verbose cwd /Users/nikki.jeske/Desktop/HACK THE PLANET/tweeviews
 13 error Darwin 13.4.0
 14 error argv "node" "/usr/local/bin/npm" "start"
 15 error node v0.10.32
-16 error npm  v2.0.2
+16 error npm  v2.1.2
 17 error code ELIFECYCLE
 18 error tweeviews@0.0.1 start: `node app.js`
 18 error Exit status 8
