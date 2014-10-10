@@ -59,7 +59,7 @@ var localPath = scriptPath.substr(0, scriptPath.lastIndexOf( '/js' )+1 );
         options.apiQueryType = 'reviews';
         options.filter = 'CampaignId:tweeviews';
         options.sort = 'LastModificationTime:desc';
-        options.limit = 10;
+        options.limit = 9;
         options = parseOptions(options);
         
         defaultSnippet(defaultConfiguration, apikey, options);
@@ -74,7 +74,7 @@ var localPath = scriptPath.substr(0, scriptPath.lastIndexOf( '/js' )+1 );
         options.apiQueryType = 'reviews';
         options.filter = 'CampaignId:tweeviews';
         options.sort = 'LastModificationTime:desc';
-        options.limit = 10;
+        options.limit = 9;
         options = parseOptions(options);
         
         defaultSnippet(defaultConfiguration, apikey, options);
