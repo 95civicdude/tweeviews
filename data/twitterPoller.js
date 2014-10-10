@@ -42,7 +42,7 @@ var getLastTweetSeen = function(clientName, callback) {
 };
 
 var getProductIds = function(clientName, callback) {
-    console.log("getProductIds(" + clientName + ")");
+    //console.log("getProductIds(" + clientName + ")");
 
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
