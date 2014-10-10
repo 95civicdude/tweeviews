@@ -1,9 +1,6 @@
-doctype html
-html
-  head
-    title campaigns
-    script(type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-  body
+extends Layout
+
+block content
     div.TVCampaigns
         form(action='/campaigns/create', method='post')
             div#clientNameDiv(data-role='fieldcontain')
@@ -22,3 +19,11 @@ html
                 input(type='submit',value='Start Tweeting',data-transition='fade', data-theme='c')
     br
     include listcampaigns
+
+
+//- doctype html
+//- html
+//-   head
+//-     title campaigns
+//-     script(type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+//-   body

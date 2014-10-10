@@ -2,8 +2,17 @@ body {font: 14px Helvetica, Arial, sans-serif; padding: 0; margin: 0;}
 .BVTweeViews {padding: 50px 50px 0; font: 14px Helvetica, Arial, sans-serif; background: url('/images/bj_bg.png') no-repeat 0 0; margin: auto 0; height: 4860px;}
 a {color: #292f33; text-decoration: none; font-style: italic;}
 	a:hover {color: #5ea9dd;}
-form {margin-top: 110px;}
-.TVCampaigns {padding: 100px;}
+.TVCampaigns, .listcampaigns {padding: 30px; width: 320px;}
+.listcampaigns {padding-top: 0;}
+.TVListCampaigns {padding: 0; border-top: 2px solid #e1e8ed;}
+	.TVListCampaigns form {border: 0; background-color: #fff; border-radius: 10px; padding: 10px;}
+	.TVListCampaigns form label {color: #292f33; padding-right: 10px;}
+	.TVListCampaigns form label input {margin-left: 10px;}
+	.TVListCampaigns form input {margin: 10px 0 0;}
+form div {margin: 10px 0;}
+form div fieldset {border: 0; background-color: #e1e8ed; border-radius: 10px; padding: 10px;}
+form div fieldset label {color: #292f33; padding-right: 10px;}
+form div fieldset label input {margin-left: 10px;}
 
 /** Widget Link **/
 
