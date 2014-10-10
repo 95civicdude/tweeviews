@@ -142,8 +142,8 @@ var startSearchPoll = function(client) {
                                 hashTags = statuses[i].entities.hashtags;
 
                                 for (var j = 0; j < hashTags.length && (!productId || !rating); j++) {
-                                    productId = productId || productIds[hashTags[j].text];
-                                    rating = rating || ratings[hashTags[j].text];
+                                    productId = productId || productIds[hashTags[j].text.toLowerCase()];
+                                    rating = rating || ratings[hashTags[j].text.toLowerCase()];
                                 }
 
                                 if (productId && rating) {
