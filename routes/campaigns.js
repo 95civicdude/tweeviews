@@ -2,7 +2,7 @@ var dbConnection = require('../data/dbConnection.js');
 
 exports.list = function(req, res) {
     var clientName = req.body.clientName;
-    var hashTags = [];
+    var hashTags = {};
 
     //console.log("clientName=" + clientName);
 
@@ -23,13 +23,16 @@ exports.list = function(req, res) {
 
                 if (client.products) {
                     for (var i=0; i<client.products.length; i++) {
-                        hashTags.push(client.products[i].hashTag);
+                        //hashTags.push(client.products[i].hashTag);
+                        hashTags[client.products[i].hashTag] = client.products[i].externalId;
+                        //console.log(client.products[i]);
                     }
                 }
             }
 
+            //var hashTagsArray = [{"hashTag": "#hashtag1", "externalId": "1234"},{"hashTag": "#hashtag1", "externalId": "1234"}];
             //console.log("hashTags.length=" + hashTags.length);
-            res.render("campaigns", {"hashTags" : hashTags});       // Send back the list of hashtags for display
+            res.render("campaigns", {"clientProducts": client.products});       // Send back the list of hashtags for display
         })
     });
 };
