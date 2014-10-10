@@ -150,13 +150,12 @@ var startSearchPoll = function(client) {
                             }
                         }
 
-                        // TODO uncomment!
-                        // searchParams.since_id = sinceIdRegexp.exec(results.search_metadata.refresh_url)[1];
-                        // setLastTweetSeen(client.name, searchParams.since_id);
+                        searchParams.since_id = sinceIdRegexp.exec(results.search_metadata.refresh_url)[1];
+                        setLastTweetSeen(client.name, searchParams.since_id);
                     }
                 });
             });
-        }, 10000);
+        }, 60000); // <---------- manipulate the poll interval here (milliseconds)
     }
 };
 
@@ -168,7 +167,10 @@ var start = function() {
             }
 
             if (client) {
-                startSearchPoll(client);
+                /***********************************************************
+                  uncomment this line if you want the twitter poller to run
+                 ***********************************************************/
+                // startSearchPoll(client);
             }
         });
     });

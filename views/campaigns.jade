@@ -1,6 +1,9 @@
-extends layout
-
-block content
+doctype html
+html
+  head
+    title campaigns
+    script(type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+  body
     div
         form(action='/campaigns/create', method='post')
             div#clientNameDiv(data-role='fieldcontain')
@@ -17,4 +20,5 @@ block content
                         input(id='externalId',type='text',value='',placeholder='externalId',name='externalId')
             div(data-role='fieldcontain')
                 input(type='submit',value='Start Tweeting',data-transition='fade', data-theme='c')
+    br
     include listcampaigns

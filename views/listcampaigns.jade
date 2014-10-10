@@ -1,9 +1,15 @@
 .listcampaigns
 
-	script
-		$('#formList').on('submit', function(e) { e.preventDefault(); })
-	div
-		form#formList(action='/campaigns/list', method='post')
-			label(for='clientName') Client Name
-				input(id='clientName',type='text',value='',placeholder='jeffs-testcompany',name='clientName')
-				input(type='submit',value='Show All',data-transition='fade', data-theme='c')
+    script
+        $('#formList').on('submit', function(e) { e.preventDefault(); })
+    div
+        form#formList(action='/campaigns/list', method='post')
+            label(for='clientName') Client Name
+                input(id='clientName',type='text',value='',placeholder='jeffs-testcompany',name='clientName')
+            br
+            input(type='submit',value='Show All',data-transition='fade', data-theme='c')
+    br
+    ul
+        - if (hashTags != undefined && hashTags != null)
+            - each hashTag in hashTags
+                li= hashTag

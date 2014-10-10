@@ -4,19 +4,32 @@ exports.list = function(req, res) {
     var clientName = req.body.clientName;
     var hashTags = [];
 
+    console.log("clientName=" + clientName);
+
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
             "name" : clientName
         }).toArray(function(err, docs) {
             if (err) {
                 throw err;
-            } else {
-                for (var i=0; i<docs[0].products.length; i++) {
-                    hashTags[i] = docs[0].products[i].hashTag;
+            }
+
+            console.log("docs.length=" + docs.length);
+
+            if (docs && docs.length) {
+                var client = docs[0];
+
+                console.log("client.products=" + client.products);
+
+                if (client.products) {
+                    for (var i=0; i<client.products.length; i++) {
+                        hashTags.push(client.products[i].hashTag);
+                    }
                 }
             }
-            console.log(hashTags.length);
-            res.redirect("campaigns", hashTags);
+
+            console.log("hashTags.length=" + hashTags.length);
+            res.render("campaigns", {"hashTags" : hashTags});
         })
     });
 };
