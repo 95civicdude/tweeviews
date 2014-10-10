@@ -20,13 +20,15 @@ a.fancybox {float: left; width: 300px; margin-top: 20px;}
 
 .tvquicktake {position: absolute; display: block; margin: 100px 0 50px; padding-bottom: 50px; color: #292f33; }
 	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px; display: inline;}
-	.tvquicktake a.tvpreview {font-style: normal; color: #5ea9dd; display: block; width: auto; margin-top: 20px; cursor: default;}
+	.tvquicktake a.tvpreview {font-style: normal; color: #292f33; display: block; width: auto; cursor: default;}
+		.tvquicktake .tvtweet .tweettext {color: #292f33;}
+		.tvquicktake .tvtweet a {color: #5ea9dd; font-style: normal; padding: 5px 0; display: block;}
 		.tvquicktake .tvtooltip a.tvpreview {margin-top: 0;}
 		.tvtooltip a.fancybox {float: left; width: auto; margin-top: 0; color: #292f33; font-style: normal; font-size: 12px; text-align: left; padding: 5px;}
 			.tvtooltip a.fancybox p {line-height: 18px;}
 				.tvtooltip a.fancybox p.tvtooltext span {font-weight: bold; color: #5ea9dd; padding-left: 3px;}
 
-.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #666; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; padding-top: 0;}
+.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #666; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; padding-top: 0; top: 100px}
 
 *:not(.on-focus):hover > .tvtooltip, .on-focus input:focus + .tvtooltip {visibility: visible;
 	opacity: 1; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out;}

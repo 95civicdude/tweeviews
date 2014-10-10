@@ -27,13 +27,23 @@
 
         <h2 class="tvqttitle">TweeViews</h2><a class="tvpreview" href=
         "/display">
-        <p>[display will go here]</p>
+        {{#each Results}}
+            <div class="tvtweet">
+           	<div class="BVRRRatingNormalImage" style="position: relative; display: inline-block;">
+				<div class="BVFWRatingBackground"><p>{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</p></div>
+				<div class="BVFRWRating" style="overflow: hidden; width: {{rangeToPercentage Rating 5}}%;"><p style="display: none;">{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</p></div>
+			</div>
+            <span class="tweetid">{{Id}}</span> <span class="tweetrate">{{Rating}}</span> <span class="tweettext">{{ReviewText}}</span> <span class="tweetname"><a href="https://twitter.com/{{UserNickname}}">{{UserNickname}}</a></span> <span class="tweetphoto">{{Photos}}</span> <span class="tweettime">{{SubmissionTime}}</span></div>
 
-        <div class="tvtooltip">
+             <div class="tvtooltip">
             <a class="fancybox" href="#inline" rel="group">
             <p class="tvtooltext">Read more reviews from other Twitter users
             on<span class="tvtoolbold">TweeViews &gt;&gt;</span></p></a>
-        </div>
+        	</div>
+
+            {{/each}}
+
+       
         <p></a>
     </div>
 
