@@ -140,7 +140,7 @@ var startSearchPoll = function(client) {
                     if (results && results.statuses && results.statuses.length) {
                         statuses = results.statuses;
 
-                        for (var i = 0; i < 1; i++) {
+                        for (var i = 0; i < statuses.length; i++) {
                             statusText = statuses[i].text;
                             productHashTag = hashTagRegexp.exec(statusText);
                             rating = starRatingRegex.exec(statusText);
@@ -156,7 +156,7 @@ var startSearchPoll = function(client) {
                     }
                 });
             });
-        }, 60000);
+        }, 10000);
     }
 };
 
