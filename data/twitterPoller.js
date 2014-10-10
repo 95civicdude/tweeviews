@@ -1,5 +1,6 @@
 var dbConnection = require("./dbConnection.js");
 var twitter = require("twitter");
+var bvsubmit = require('bvsubmit');
 
 var ratings = {
     "1star" : 1,
@@ -99,8 +100,6 @@ var submitReview = function(client, status, productId, rating) {
         review.thirdpartyphotourl_1 = status.user.profile_image_url;
     }
 
-    var bvsubmit = require('bvsubmit');
-
     bvsubmit.postReview(client,review);
 };
 
@@ -135,6 +134,8 @@ var startSearchPoll = function(client) {
                         console.log("new tweets: " + statuses.length);
 
                         for (var i = 0; i < statuses.length; i++) {
+                            console.log(statuses[i].text);
+
                             if (statuses[i].entities && statuses[i].entities.hashtags) {
                                 productId = null;
                                 rating = 0;
@@ -147,9 +148,7 @@ var startSearchPoll = function(client) {
 
                                 if (productId && rating) {
                                     console.log("found tweet for product|productId=" + productId + "|rating=" + rating);
-                                    console.log(statuses[i].text);
-
-                                    submitReview(client, statuses[i], productIds[productHashTag[1]], convertRatinStringToNumber(rating[2]));
+                                    submitReview(client, statuses[i], productId, String(rating));
                                 }
                             }
                         }
