@@ -89,13 +89,7 @@ var convertRatinStringToNumber = function(rating) {
     return String(rating);
 };
 
-var submitReview = function(clientInfo, review) {
-    // TODO
-    console.log("submitReview()");
-    console.log(JSON.stringify(review, null, "   "));
-};
-
-var submitReview2 = function(client, status, productId, rating) {
+var submitReview = function(client, status, productId, rating) {
     var review = {
         "userid" : String(status.user.id),
         "usernickname" : "@" + status.user.screen_name,
@@ -112,7 +106,9 @@ var submitReview2 = function(client, status, productId, rating) {
         review.thirdpartyphotourl_1 = status.user.profile_image_url;
     }
 
-    submitReview(client, review);
+    var bvsubmit = require('bvsubmit');
+
+    bvsubmit.postReview(client,review);
 };
 
 var startSearchPoll = function(client) {
@@ -144,13 +140,13 @@ var startSearchPoll = function(client) {
                     if (results && results.statuses && results.statuses.length) {
                         statuses = results.statuses;
 
-                        for (var i = 0; i < statuses.length; i++) {
+                        for (var i = 0; i < 1; i++) {
                             statusText = statuses[i].text;
                             productHashTag = hashTagRegexp.exec(statusText);
                             rating = starRatingRegex.exec(statusText);
 
                             if(productHashTag && rating) {
-                                submitReview2(client, statuses[i], productIds[productHashTag[1]], convertRatinStringToNumber(rating[2]));
+                                submitReview(client, statuses[i], productIds[productHashTag[1]], convertRatinStringToNumber(rating[2]));
                             }
                         }
 
