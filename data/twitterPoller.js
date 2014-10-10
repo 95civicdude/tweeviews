@@ -156,7 +156,7 @@ var startSearchPoll = function(client) {
                     }
                 });
             });
-        }, 3500);
+        }, 60000);
     }
 };
 
