@@ -1,12 +1,27 @@
 var dbConnection = require("./dbConnection.js");
 var twitter = require("twitter");
-var starRatingRegex = /#(([1-5]|one|two|three|four|five)stars?)[\s#]*/i;
-var ratingStringToNumber = {
-    "one" : 1,
-    "two" : 2,
-    "three" : 3,
-    "four" : 4,
-    "five" : 5
+
+var ratings = {
+    "1star" : 1,
+    "2star" : 2,
+    "3star" : 3,
+    "4star" : 4,
+    "5star" : 5,
+    "1stars" : 1,
+    "2stars" : 2,
+    "3stars" : 3,
+    "4stars" : 4,
+    "5stars" : 5,
+    "onestar" : 1,
+    "twostar" : 2,
+    "threestar" : 3,
+    "fourstar" : 4,
+    "fivestar" : 5,
+    "onestars" : 1,
+    "twostars" : 2,
+    "threestars" : 3,
+    "fourstars" : 4,
+    "fivetars" : 5,
 };
 
 var setLastTweetSeen = function(clientName, tweetId) {
@@ -42,8 +57,6 @@ var getLastTweetSeen = function(clientName, callback) {
 };
 
 var getProductIds = function(clientName, callback) {
-    //console.log("getProductIds(" + clientName + ")");
-
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
             "name" : clientName
@@ -59,7 +72,7 @@ var getProductIds = function(clientName, callback) {
                     var productIds = [];
 
                     for (var i = 0; i < client.products.length; i++) {
-                        productIds[client.products[i].hashTag] = client.products[i].externalId;
+                        productIds[client.products[i].hashTag.substr(1)] = client.products[i].externalId;
                     };
 
                     callback(productIds);
@@ -67,26 +80,6 @@ var getProductIds = function(clientName, callback) {
             }
         });
     });
-};
-
-var buildProductHashTagRegexp = function(products) {
-    var hashTagRegexp =  "(" + products[0].hashTag;
-
-    for (var i = 1; i < products.length; i++) {
-        hashTagRegexp += "|" + products[i].hashTag;
-    }
-
-    hashTagRegexp += ")";
-
-    return new RegExp(hashTagRegexp, "i");
-};
-
-var convertRatinStringToNumber = function(rating) {
-    if (isNaN(rating)) {
-        rating = ratingStringToNumber[rating];
-    }
-
-    return String(rating);
 };
 
 var submitReview = function(client, status, productId, rating) {
@@ -121,10 +114,7 @@ var startSearchPoll = function(client) {
         });
 
         var sinceIdRegexp = /\?since_id=([0-9]+).+/;
-        var hashTagRegexp = buildProductHashTagRegexp(client.products);
-        var statuses = null;
         var rating = null;
-        var productHashTag = null;
         var review = null;
         var searchParams = {};
 
@@ -138,15 +128,29 @@ var startSearchPoll = function(client) {
             getProductIds(client.name, function(productIds) {
                 t.search("@" + client.twitterHandle, searchParams, function(results) {
                     if (results && results.statuses && results.statuses.length) {
-                        statuses = results.statuses;
+                        var hashTags = null;
+                        var productId = null;
+                        var statuses = results.statuses;
+
+                        console.log("new tweets: " + statuses.length);
 
                         for (var i = 0; i < statuses.length; i++) {
-                            statusText = statuses[i].text;
-                            productHashTag = hashTagRegexp.exec(statusText);
-                            rating = starRatingRegex.exec(statusText);
+                            if (statuses[i].entities && statuses[i].entities.hashtags) {
+                                productId = null;
+                                rating = 0;
+                                hashTags = statuses[i].entities.hashtags;
 
-                            if(productHashTag && rating) {
-                                submitReview(client, statuses[i], productIds[productHashTag[1]], convertRatinStringToNumber(rating[2]));
+                                for (var j = 0; j < hashTags.length && (!productId || !rating); j++) {
+                                    productId = productId || productIds[hashTags[j].text];
+                                    rating = rating || ratings[hashTags[j].text];
+                                }
+
+                                if (productId && rating) {
+                                    console.log("found tweet for product|productId=" + productId + "|rating=" + rating);
+                                    console.log(statuses[i].text);
+
+                                    submitReview(client, statuses[i], productIds[productHashTag[1]], convertRatinStringToNumber(rating[2]));
+                                }
                             }
                         }
 
@@ -167,10 +171,7 @@ var start = function() {
             }
 
             if (client) {
-                /***********************************************************
-                  uncomment this line if you want the twitter poller to run
-                 ***********************************************************/
-                // startSearchPoll(client);
+                startSearchPoll(client);
             }
         });
     });
