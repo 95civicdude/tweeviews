@@ -27,6 +27,7 @@
 		<h2 class="tvqttitle">TweeViews</h2></span><a class="tvpreview" href=
         "/display">
         {{#each Results}}
+        	{{#if Rating}}
             <div class="tvtweet">
            	<div class="BVRRRatingNormalImage" style="position: relative; display: block;">
 				<div class="BVFWRatingBackground"><p>{{{starRatings product.ReviewStatistics.OverallRatingRange}}}</p></div>
@@ -39,8 +40,8 @@
             <p class="tvtooltext">Read more reviews from other Twitter users
             on<span class="tvtoolbold">TweeViews &gt;&gt;</span></p></a>
         	</div>
-
-            {{/each}}
+        	{{/if}}
+        {{/each}}
 
        
         <p></a>
