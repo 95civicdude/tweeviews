@@ -7,7 +7,7 @@ form {margin-top: 110px;}
 
 img.bird {float: left; margin-right: 5px;}
 .tvlink {padding-top: 0; margin-top: 8px;}
-a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 1000px;}
+a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 950px;}
 
 /** TweeView Lightbox **/
 
@@ -16,10 +16,11 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 1000px;}
 	h2.tvtitle {font-size: 40px; color: #5ea9dd; font-style: italic; margin-top: 0; border-bottom: 4px solid #e1e8ed; padding-bottom: 10px;}
 	img.bigbird {float: left; margin-right: 5px;}
 	.tvlightfoot {border-top: 4px solid #e1e8ed; text-align: right; color: #a7b3bc; font-style: italic; margin-top: 40px;}
+		.tvlightfoot a, .tvlightfoot a:hover {color: #a7b3bc; text-decoration: none;}
 
 /** TweeView Quicktake **/
 
-.tvquicktake {position: absolute; display: block; margin: 3090px 0 50px 90px; padding-bottom: 50px; color: #292f33; width: 100%;}
+.tvquicktake {position: absolute; display: block; margin: 3090px 0 50px 90px; padding-bottom: 50px; color: #292f33; width: 700px;}
 	h2.tvqttitle {font-size: 30px; color: #5ea9dd; font-style: italic; margin-top: 0; padding-bottom: 10px; display: inline;}
 	.tvquicktake a.tvpreview {font-style: normal; color: #292f33; display: block; width: auto; cursor: default;}
 		.tvquicktake .tvtweet .tweettext {color: #292f33;}
