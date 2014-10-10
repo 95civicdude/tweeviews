@@ -38,6 +38,7 @@ app.get('/campaigns', campaigns.display);
 
 app.post('/clients/create', clients.create);
 app.post('/campaigns/create', campaigns.create);
+app.post('/campaigns/list', campaigns.list);
 
 process.on('SIGINT', function() {
   process.exit();

@@ -1,5 +1,26 @@
 var dbConnection = require('../data/dbConnection.js');
 
+exports.list = function(req, res) {
+    var clientName = req.body.clientName;
+    var hashTags = [];
+
+    dbConnection.getClientsCollection(function(clients) {
+        clients.find({
+            "name" : clientName
+        }).toArray(function(err, docs) {
+            if (err) {
+                throw err;
+            } else {
+                for (var i=0; i<docs[0].products.length; i++) {
+                    hashTags[i] = docs[0].products[i].hashTag;
+                }
+            }
+            console.log(hashTags.length);
+            res.redirect("campaigns", hashTags);
+        })
+    });
+};
+
 exports.create = function(req, res) {
     var clientName = req.body.clientName;
     var externalId = req.body.externalId;
