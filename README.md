@@ -64,7 +64,7 @@ Working with Client Documents
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
             "name" : "clientName"
-        }).each(, function(err, client) {
+        }).each(function(err, client) {
             if (err) {
                 throw err;
             }
