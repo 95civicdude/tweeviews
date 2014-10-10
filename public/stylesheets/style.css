@@ -27,11 +27,11 @@ a.fancybox {float: left; width: 300px; margin-top: 320px; margin-left: 950px;}
 		.tvquicktake .tvtweet .tweettext {color: #292f33;}
 		.tvquicktake .tvtweet a {color: #5ea9dd; font-style: normal; padding: 3px 0; display: block;}
 		.tvquicktake .tvtooltip a.tvpreview {margin-top: 0;}
-		.tvtooltip a.fancybox {float: left; width: auto; margin: 0 0 0 0; color: #292f33; font-style: normal; font-size: 14px; text-align: left; padding: 5px 5px 5px 5px;}
+		.tvtooltip a.fancybox {float: left; width: auto; margin: 0 0 0 0; color: #292f33; font-style: normal; font-size: 16px; text-align: left; padding: 5px 5px 5px 5px;}
 			.tvtooltip a.fancybox p {line-height: 18px;}
 				.tvtooltip a.fancybox p.tvtooltext span {font-weight: bold; color: #5ea9dd; padding-left: 3px;}
 
-.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #666; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; padding-top: 0; top: 100px}
+.tvtooltip {color: #fff; background-color: #fff; box-shadow: 0 0 4px #666; visibility: hidden; -webkit-border-radius: 7px; -moz-border-radius: 7px; -o-border-radius: 7px; border-radius: 7px; text-align: center; z-index: 999; padding: 3px 8px; position: absolute; cursor: default; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out; right: auto; top: 100px}
 
 *:not(.on-focus):hover > .tvtooltip, .on-focus input:focus + .tvtooltip {visibility: visible;
 	opacity: 1; -webkit-transition: all 240ms ease-in-out; -moz-transition: all 240ms ease-in-out; -ms-transition: all 240ms ease-in-out; -o-transition: all 240ms ease-in-out; transition: all 240ms ease-in-out;}
