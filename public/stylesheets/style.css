@@ -14,6 +14,12 @@ form div fieldset {border: 0; background-color: #e1e8ed; border-radius: 10px; pa
 form div fieldset label {color: #292f33; padding-right: 10px;}
 form div fieldset label input {margin-left: 10px;}
 
+form.tvclients {padding: 30px; width: 330px;}
+	form.tvclients fieldset {border: 0; background-color: #e1e8ed; border-radius: 10px; padding: 10px 10px 20px;}
+	form.tvclients fieldset legend {display: block; font-weight: bold; font-size: 22px; color: #5ea9dd;}
+	form.tvclients fieldset label {display: block;}
+		form.tvclients fieldset label input {margin-left: 10px;}
+
 /** Widget Link **/
 
 img.bird {float: left; margin-right: 5px;}
