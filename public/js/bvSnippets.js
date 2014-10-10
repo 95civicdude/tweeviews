@@ -72,7 +72,7 @@ var localPath = scriptPath.substr(0, scriptPath.lastIndexOf( '/js' )+1 );
         };
         options.template = 'tweeviews';
         options.apiQueryType = 'reviews';
-        //options.filter = 'CampaignId:tweeviews';
+        options.filter = 'CampaignId:tweeviews';
         options.sort = 'LastModificationTime:desc';
         options.limit = 10;
         options = parseOptions(options);
