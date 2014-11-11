@@ -7,6 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var campaigns = require('./routes/campaigns');
 var clients = require('./routes/clients');
+var sampledisplay = require('./routes/sampledisplay');	
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -31,10 +32,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', campaigns.display);
+app.get('/', routes.index);
 app.get('/display', routes.display);
 app.get('/clients', clients.display);
 app.get('/campaigns', campaigns.display);
+app.get('/sampledisplay/:clientName/:hashTag', sampledisplay.display);
+
+// GET /p/5
+// tagID is set to 5
 
 app.post('/clients/create', clients.create);
 app.post('/campaigns/create', campaigns.create);
