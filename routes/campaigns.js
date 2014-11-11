@@ -1,10 +1,22 @@
 var dbConnection = require('../data/dbConnection.js');
+var twitterPoller = require('../data/twitterPoller.js');
+
+exports.startStopCampaign = function(req, res) {
+    var hashTag = req.body.hashTag;
+    var flag = req.body.startStop;
+
+    if (flag == "stop") {
+        twitterPoller.removeHashTag(hashTag);
+    } else {
+        twitterPoller.addHashTag(hashTag);
+    }
+
+    res.render("campaigns");
+};
 
 exports.list = function(req, res) {
     var clientName = req.body.clientName;
     var hashTags = {};
-
-    //console.log("clientName=" + clientName);
 
     dbConnection.getClientsCollection(function(clients) {
         clients.find({
@@ -14,24 +26,15 @@ exports.list = function(req, res) {
                 throw err;
             }
 
-            //console.log("docs.length=" + docs.length);
-
             if (docs && docs.length) {
                 var client = docs[0];
 
-                //console.log("client.products=" + client.products);
-
                 if (client.products) {
                     for (var i=0; i<client.products.length; i++) {
-                        //hashTags.push(client.products[i].hashTag);
                         hashTags[client.products[i].hashTag] = client.products[i].externalId;
-                        //console.log(client.products[i]);
                     }
                 }
             }
-
-            //var hashTagsArray = [{"hashTag": "#hashtag1", "externalId": "1234"},{"hashTag": "#hashtag1", "externalId": "1234"}];
-            //console.log("hashTags.length=" + hashTags.length);
             res.render("campaigns", {"clientProducts": client.products});       // Send back the list of hashtags for display
         })
     });
