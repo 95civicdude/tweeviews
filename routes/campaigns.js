@@ -11,7 +11,7 @@ exports.startStopCampaign = function(req, res) {
         twitterPoller.addHashTag(hashTag);
     }
 
-    res.render("index");
+    res.render("campaigns");
 };
 
 exports.list = function(req, res) {
@@ -35,7 +35,7 @@ exports.list = function(req, res) {
                     }
                 }
             }
-            res.render("index", {"clientProducts": client.products});       // Send back the list of hashtags for display
+            res.render("campaigns", {"clientProducts": client.products});       // Send back the list of hashtags for display
         })
     });
 };
@@ -80,9 +80,9 @@ exports.create = function(req, res) {
         });
     });
 
-    res.redirect("index");
+    res.redirect("campaigns");
 };
 
 exports.display = function(req, res) {
-    res.render("index");
+    res.render("campaigns");
 };
