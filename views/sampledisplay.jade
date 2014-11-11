@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div.BVTweeviewSampleDisplay
+    //h1= title
+    //p Welcome to #{title}
+    div.BVTweeviewsSummary(data-id="#{hashTag}")
+    div.BVTweeviews(data-id="#{hashTag}")
+    script.
+      $(".BVTweeviewsSummary").tweeviewsSummary('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
+      $(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
+      $(document).ready(function() { $(".fancybox").fancybox(); });
