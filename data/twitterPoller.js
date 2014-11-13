@@ -1,6 +1,7 @@
 var dbConnection = require("./dbConnection.js");
+var config = require("../config.js").config.data.twitterPoller;
 var twitter = require("twitter");
-var bvsubmit = require('bvsubmit');
+var bvsubmit = require("bvsubmit");
 
 var ratings = {
     "1star" : 1,
@@ -26,7 +27,7 @@ var ratings = {
 };
 
 var setLastTweetSeen = function(clientName, tweetId) {
-    dbConnection.getClientsCollection(function(clients) {
+    dbConnection.getCollection(function(clients) {
         clients.update({
             "name" : clientName
         }, {
@@ -42,7 +43,7 @@ var setLastTweetSeen = function(clientName, tweetId) {
 };
 
 var getLastTweetSeen = function(clientName, callback) {
-    dbConnection.getClientsCollection(function(clients) {
+    dbConnection.getCollection(function(clients) {
         clients.find({
             "name" : clientName
         }).toArray(function(err, docs) {
@@ -58,7 +59,7 @@ var getLastTweetSeen = function(clientName, callback) {
 };
 
 var getProductIds = function(clientName, callback) {
-    dbConnection.getClientsCollection(function(clients) {
+    dbConnection.getCollection(function(clients) {
         clients.find({
             "name" : clientName
         }).toArray(function(err, docs) {
@@ -158,12 +159,12 @@ var startSearchPoll = function(client) {
                     }
                 });
             });
-        }, 60000); // <---------- manipulate the poll interval here (milliseconds)
+        }, config.pollingInterval);
     }
 };
 
 var start = function() {
-    dbConnection.getClientsCollection(function(clients) {
+    dbConnection.getCollection(function(clients) {
         clients.find().each(function(err, client) {
             if (err) {
                 throw err;

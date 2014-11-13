@@ -7,7 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var campaigns = require('./routes/campaigns');
 var clients = require('./routes/clients');
-var sampledisplay = require('./routes/sampledisplay');	
+var sampledisplay = require('./routes/sampledisplay');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -51,9 +51,11 @@ process.on('SIGINT', function() {
 process.on('exit', function() {
     var dbConnection = require('./data/dbConnection.js');
 
+    console.log("closing db connection...");
     dbConnection.closeDbConnection();
 });
 
+console.log("starting Twitter poller...");
 require('./data/twitterPoller.js').start();
 
 http.createServer(app).listen(app.get('port'), function(){
