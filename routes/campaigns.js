@@ -33,9 +33,9 @@ exports.list = function(req, res) {
                     for (var i=0; i<client.products.length; i++) {
                         hashTags[client.products[i].hashTag] = client.products[i].externalId;
                     }
+                    res.render("campaigns", {"clientProducts": client.products, "apiKey": client.apiKey});       // Send back the list of hashtags for display
                 }
             }
-            res.render("campaigns", {"clientProducts": client.products});       // Send back the list of hashtags for display
         })
     });
 };

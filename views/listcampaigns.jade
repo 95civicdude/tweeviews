@@ -11,6 +11,6 @@
     br
     ul
         - if (clientProducts != undefined && clientProducts != null)
-            p= 'Hashtag' + '      ------------------>>>>>>>>>>>      ' + 'ExternalId'
+            p= 'Hashtag: ExternalId (API Key)'
             - each client in clientProducts
-                li= client.hashTag + '      ------------------>>>>>>>>>>>      ' + client.externalId + apiKey
+                li= client.hashTag + ': ' + client.externalId + ' (' + apiKey + ')'
