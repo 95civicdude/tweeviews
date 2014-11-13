@@ -3,10 +3,13 @@ extends layout
 block content
   div.BVTweeviewSampleDisplay
     //h1= title
-    p Hash tag is #{hashTag}, client is #{clientName}, apikey is #{apiKey}
+    if error == "not_provisioned"
+        p This client does not have Tweeviews set up. Please goto /clients to provision a new account.
+    else
+        p Hash tag is #{hashTag}, client is #{clientName}, apikey is #{apiKey}
     div.BVTweeviewsSummary(data-id="#{hashTag}")
     div.BVTweeviews(data-id="#{hashTag}")
     script.
-      $(".BVTweeviewsSummary").tweeviewsSummary('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
-      $(".BVTweeviews").tweeviews('m6alb4h78ttx8d9rznzmxsqw1', { staging: true });
+      $(".BVTweeviewsSummary").tweeviewsSummary('#{apiKey}', { staging: true });
+      $(".BVTweeviews").tweeviews('#{apiKey}', { staging: true });
       $(document).ready(function() { $(".fancybox").fancybox(); });
