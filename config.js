@@ -1,24 +1,21 @@
-// top-most parent
-var config = {};
-
 // parent object for data-level configurations
-config.data = {};
+var data = {};
 
 /*********************
  data/dbConnection.js
  *********************/
-config.data.dbConnection = {};
-config.data.dbConnection.server = "hackathon.ts.bazaarvoice.com";
-config.data.dbConnection.port = 27017;
-config.data.dbConnection.database = "tweeviews";
-config.data.dbConnection.collection = "clients";
+data.dbConnection = {};
+data.dbConnection.server = "hackathon.ts.bazaarvoice.com";
+data.dbConnection.port = 27017;
+data.dbConnection.database = "tweeviews";
+data.dbConnection.collection = "clients";
 // assumes mongo
-config.data.dbConnection.url = "mongodb://" + config.data.dbConnection.server + ":" + config.data.dbConnection.port + "/" + config.data.dbConnection.database;
+data.dbConnection.url = "mongodb://" + data.dbConnection.server + ":" + data.dbConnection.port + "/" + data.dbConnection.database;
 
 /**********************
  data/twitterPoller.js
  **********************/
-config.data.twitterPoller = {};
-config.data.twitterPoller.pollingInterval = 300000; // in millisenconds
+data.twitterPoller = {};
+data.twitterPoller.pollingInterval = 600000; // in millisenconds
 
-exports.config = config;
+exports.data = data;

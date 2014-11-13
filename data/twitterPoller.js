@@ -1,5 +1,5 @@
 var dbConnection = require("./dbConnection.js");
-var config = require("../config.js").config.data.twitterPoller;
+var config = require("../config.js").data.twitterPoller;
 var twitter = require("twitter");
 var bvsubmit = require("bvsubmit");
 
@@ -160,21 +160,28 @@ var startSearchPoll = function(client) {
                 });
             });
         }, config.pollingInterval);
+    } else {
+        console.log("missing Twitter credentials|client=" + JSON.stringify(client));
     }
 };
 
 var start = function() {
-    dbConnection.getCollection(function(clients) {
-        clients.find().each(function(err, client) {
-            if (err) {
-                throw err;
-            }
+    if (config.pollingInterval > 0) {
+        dbConnection.getCollection(function(clients) {
+            clients.find().each(function(err, client) {
+                if (err) {
+                    throw err;
+                }
 
-            if (client) {
-                startSearchPoll(client);
-            }
+                if (client) {
+                    console.log("starting twitterPoller|client=" + client + "|pollingInterval=" + config.pollingInterval + "ms");
+                    startSearchPoll(client);
+                }
+            });
         });
-    });
+    } else {
+        console.log("twitterPoller will not start. invalid polling interval|pollingInterval=" + config.pollingInterval + "ms");
+    }
 };
 
 exports.start = start;
