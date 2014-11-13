@@ -1,5 +1,5 @@
 var mongoClient = require("mongodb").MongoClient;
-var config = require("../config.js").config.data.dbConnection;
+var config = require("../config.js").data.dbConnection;
 
 var dbConnection = null;
 var clientsCollection = null;
@@ -44,27 +44,8 @@ var getCollection = function(callback) {
     }
 };
 
-/*
- * @deprecated use getCollection, instead
- */
-var getClientsCollection = function(callback) {
-    if (clientsCollection) {
-        callback(clientsCollection);
-    } else {
-        getDbConnection(function(db) {
-            db.collection("clients", function (err, coll) {
-                if (err) {
-                  throw err;
-                }
-
-                clientsCollection = coll;
-                callback(clientsCollection);
-            });
-        });
-    }
-};
-
 exports.closeDbConnection = closeDbConnection;
 exports.getDbConnection = getDbConnection;
-exports.getClientsCollection = getClientsCollection;
+// deprecated. use getCollection instead of getClientsCollection
+exports.getClientsCollection = getCollection;
 exports.getCollection = getCollection;
