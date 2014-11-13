@@ -22,7 +22,7 @@ var ratings = {
     "twostars" : 2,
     "threestars" : 3,
     "fourstars" : 4,
-    "fivetars" : 5,
+    "fivestars" : 5,
 };
 
 var setLastTweetSeen = function(clientName, tweetId) {

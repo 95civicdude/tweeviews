@@ -81,12 +81,10 @@ To add a new campaign for a client, use [http://localhost:3000/campaigns/](http:
 
 TWITTER POLLER
 ==============
-~~In order to preserve our limited number of tweeviews and to keep the node.js console fairly clean, the Twitter Poller is "off" by default. To turn it back "on", uncomment this line of code in [twitterPoller.js](https://github.com/95civicdude/tweeviews/blob/master/data/twitterPoller.js):
+The Twitter poller is on by default and set to poll every 60 seconds. To turn the Twitter poller on or off, uncomment or comment out this line of code in [twitterPoller.js](https://github.com/95civicdude/tweeviews/blob/master/data/twitterPoller.js):
 
 ```
-// startSearchPoll(client);
+startSearchPoll(client);
 ```
 
-You can search the source or look around [line 174](https://github.com/95civicdude/tweeviews/blob/master/data/twitterPoller.js#L174).~~
-
-The Twitter poller is on by default and set to poll every 60 seconds.
+You can search the source or look around [line 161](https://github.com/95civicdude/tweeviews/blob/master/data/twitterPoller.js#L161) to change the wait time between polls.

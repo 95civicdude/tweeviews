@@ -10,9 +10,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.5.1",
+    "bunyan" : "*",
+    "express": "*",
     "jade": "*",
-    "mongodb" : "~2.0"
+    "mongodb" : "*",
+    "request" : "*",
+    "twitter" : "*"
   },
   "contributors" : [
     {
