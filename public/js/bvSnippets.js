@@ -80,6 +80,37 @@ var localPath = scriptPath.substr(0, scriptPath.lastIndexOf( '/js' )+1 );
         defaultSnippet(defaultConfiguration, apikey, options);
     };
 
+
+    $.fn.tweeviewsSampleSummary = function(apikey, options){
+        //define option defaults for inline ratings.  this also enumerates all possible options
+        var defaultConfiguration = {
+            selectedElements: this
+        };
+        options.template = 'tweeviewsSampleSummary';
+        options.apiQueryType = 'reviews';
+        options.filter = 'CampaignId:tweeviews';
+        options.sort = 'LastModificationTime:desc';
+        options.limit = 9;
+        options = parseOptions(options);
+        
+        defaultSnippet(defaultConfiguration, apikey, options);
+    };
+
+    $.fn.tweeviewsSample = function(apikey, options){
+        //define option defaults for inline ratings.  this also enumerates all possible options
+        var defaultConfiguration = {
+            selectedElements: this
+        };
+        options.template = 'tweeviewsSample';
+        options.apiQueryType = 'reviews';
+        options.filter = 'CampaignId:tweeviews';
+        options.sort = 'LastModificationTime:desc';
+        options.limit = 9;
+        options = parseOptions(options);
+        
+        defaultSnippet(defaultConfiguration, apikey, options);
+    };
+
     $.fn.inlineRatings = function(apikey, options){
         //define option defaults for inline ratings.  this also enumerates all possible options
         var defaultConfiguration = {

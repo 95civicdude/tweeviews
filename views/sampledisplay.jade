@@ -1,15 +1,17 @@
 extends layout
-
 block content
   div.BVTweeviewSampleDisplay
     //h1= title
+    h2 Client Information
     if error == "not_provisioned"
         p This client does not have Tweeviews set up. Please goto /clients to provision a new account.
     else
         p Hash tag is #{hashTag}, client is #{clientName}, apikey is #{apiKey}
+    h2 BVTweeviewsSummary
     div.BVTweeviewsSummary(data-id="#{hashTag}")
+    h2 BVTweeviews
     div.BVTweeviews(data-id="#{hashTag}")
     script.
-      $(".BVTweeviewsSummary").tweeviewsSummary('#{apiKey}', { staging: true });
-      $(".BVTweeviews").tweeviews('#{apiKey}', { staging: true });
+      $(".BVTweeviewsSummary").tweeviewsSampleSummary('#{apiKey}', { staging: true });
+      $(".BVTweeviews").tweeviewsSample('#{apiKey}', { staging: true });
       $(document).ready(function() { $(".fancybox").fancybox(); });
