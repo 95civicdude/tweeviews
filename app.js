@@ -47,7 +47,8 @@ app.get('/sampledisplay/:clientName/:hashTag', sampledisplay.display);
 // tagID is set to 5
 
 app.post('/clients/create', clients.create);
-app.post('/campaigns/create', campaigns.create);
+app.post('/campaigns/addOrUpdate', campaigns.addOrUpdate);
+app.post('/campaigns/end', campaigns.end);
 app.post('/campaigns/list', campaigns.list);
 
 process.on('SIGINT', function() {
