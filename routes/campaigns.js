@@ -81,8 +81,8 @@ exports.addOrUpdate = function(req, res) {
 
 exports.end = function(req, res) {
     var campaignEnd = Date.now();
-    var clientName = req.body.endClientName;
-    var productExternalId = req.body.endProductExternalId;
+    var clientName = req.body.clientName;
+    var productExternalId = req.body.productExternalId;
 
     dbConnection.getCollection(function(clients) {
         clients.update({

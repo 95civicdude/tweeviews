@@ -94,16 +94,16 @@ html(lang="en")
             div#clientNameDiv(data-role='fieldcontain')
                 legend Add or Update Campaign
                 fieldset(data-role='controlgroup')
-                    label(for='clientName') Client Name
-                        input(id='clientName',type='text',value='',placeholder='jeffs-testcompany',name='clientName')
-                    label(for='productHashTag') Product Hashtag
-                        input(id='productHashTag',type='text',value='',placeholder='#wutwut',name='productHashTag')
-                    label(for='productExternalId') Product ID
-                        input(id='productExternalId',type='text',value='',placeholder='externalId',name='productExternalId')
-                    label(for='campaignStart') Start Date
-                        input(id='campaignStart',type='datetime-local',name='campaignStart')
-                    label(for='campaignEnd') End Date
-                        input(id='campaignEnd',type='datetime-local',name='campaignEnd')
+                    label Client Name
+                        input(type='text',placeholder='jeffs-testcompany',name='clientName')
+                    label Product Hashtag
+                        input(type='text',placeholder='#wutwut',name='productHashTag')
+                    label Product ID
+                        input(type='text',placeholder='externalId',name='productExternalId')
+                    label Start Date
+                        input(type='datetime-local',name='campaignStart')
+                    label End Date
+                        input(type='datetime-local',name='campaignEnd')
             div(data-role='fieldcontain')
                 input(type='submit',value='Start Tweeting',data-transition='fade', data-theme='c')
         script
@@ -113,10 +113,10 @@ html(lang="en")
           div#endCampaignDiv(data-role='fieldcontain')
             legend End Campaign
             fieldset(data-role='controlgroup')
-              label(for='endClientName') Client Name
-                input(id='endClientName',type='text',placeholder='jeffs-testcompany',name='endClientName')
-              label(for='endProductExternalId') Product ID
-                input(id='endProductExternalId',type='text',placeholder='externalId',name='endProductExternalId')
+              label Client Name
+                input(type='text',placeholder='jeffs-testcompany',name='clientName')
+              label Product ID
+                input(type='text',placeholder='externalId',name='productExternalId')
           div(data-role='fieldcontain')
               input(type='submit',value='End Campaign',data-transition='fade', data-theme='c')
       div.TVListCampaigns
@@ -124,8 +124,8 @@ html(lang="en")
           div#clientListDiv(data-role='fieldcontain')
             legend See Client Campaigns
             fieldset(data-role='controlgroup')
-              label(for='clientName') Client Name
-                input(id='clientName',type='text',value='',placeholder='jeffs-testcompany',name='clientName')
+              label Client Name
+                input(type='text',placeholder='jeffs-testcompany',name='clientName')
           div(data-role='fieldcontain')
             input(type='submit',value='Show All',data-transition='fade', data-theme='c')
         ul
