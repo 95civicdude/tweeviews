@@ -1,0 +1,450 @@
+[class^="icon-"],
+[class*=" icon-"] {
+  font-style: normal;
+  font-weight: normal;
+}
+.btn.dropdown-toggle [class^="icon-"],
+.btn.dropdown-toggle [class*=" icon-"] {
+  /* keeps button heights with and without icons the same */
+
+  line-height: 1.4em;
+}
+.icon-large {
+  font-size: 1.3333em;
+}
+/*  Glyph assignment
+    ------------------------------------------------------- 
+    Including [class] attribute selector for specificity, 
+    and declaring font-family on a per-glyph basis, 
+    since these styles are currently used in conjunction 
+    with Font Awesome */
+
+.icon-cloud-upload[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'c');
+}
+
+.icon-ban-circle[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'd');
+}
+
+.icon-bolt[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'e');
+}
+
+.icon-rss[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'f');
+}
+
+.icon-group[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'g');
+}
+
+.icon-info[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'i');
+}
+
+.icon-link[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'j');
+}
+
+.icon-heart[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'k');
+}
+
+.icon-th-list[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'l');
+}
+
+.icon-music[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'm');
+}
+
+.icon-note[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'n');
+}
+
+.icon-folder-close[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'o');
+}
+
+.icon-pencil[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'p');
+}
+
+.icon-comments[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'q');
+}
+
+.icon-retweet[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'r');
+}
+
+.icon-search[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 's');
+}
+
+.icon-time[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 't');
+}
+
+.icon-switch[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'u');
+}
+
+.icon-camera[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'v');
+}
+
+.icon-comment[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'w');
+}
+
+.icon-tools[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'x');
+}
+
+.icon-cog[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'y');
+}
+
+.icon-tags[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'z');
+}
+
+.icon-cloud[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'C');
+}
+
+.icon-remove-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'D');
+}
+
+.icon-eye-open[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'E');
+}
+
+.icon-file[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'F');
+}
+
+.icon-inbox[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'I');
+}
+
+.icon-resize-small[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'J');
+}
+
+.icon-key[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'K');
+}
+
+.icon-lens[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'L');
+}
+
+.icon-envelope-alt[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'M');
+}
+
+.icon-news[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'N');
+}
+
+.icon-briefcase[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'O');
+}
+
+.icon-picture[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'P');
+}
+
+.icon-off[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'Q');
+}
+
+.icon-share[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'R');
+}
+
+.icon-star[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'S');
+}
+
+.icon-plane[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'T');
+}
+
+.icon-video[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'V');
+}
+
+.icon-edit[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'W');
+}
+
+.icon-truck[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'X');
+}
+
+.icon-chart-line[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'Y');
+}
+
+.icon-chart-pie[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'Z');
+}
+
+.icon-fullscreen[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '`');
+}
+
+.icon-repeat[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '1');
+}
+
+.icon-ok-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '2');
+}
+
+.icon-ok[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '3');
+}
+
+.icon-play[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '4');
+}
+
+.icon-pause[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '5');
+}
+
+.icon-stop[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '6');
+}
+
+.icon-forward[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '7');
+}
+
+.icon-backward[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '8');
+}
+
+.icon-play-circle[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '9');
+}
+
+.icon-refresh[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '0');
+}
+
+.icon-minus-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '-');
+}
+
+.icon-battery[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '=');
+}
+
+.icon-arrow-left[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '[');
+}
+
+.icon-arrow-right[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = ']');
+}
+
+.icon-calendar[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '\');
+}
+
+.icon-random[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = ';');
+}
+
+.icon-wifi[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = ''');
+}
+
+.icon-dashboard[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = ',');
+}
+
+.icon-ellipsis[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '.');
+}
+
+.icon-print[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '/');
+}
+
+.icon-download[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '~');
+}
+
+.icon-warning-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '!');
+}
+
+.icon-map-marker[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '@');
+}
+
+.icon-trash[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '#');
+}
+
+.icon-shopping-cart[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '$');
+}
+
+.icon-money-alt[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '%');
+}
+
+.icon-flag[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '^');
+}
+
+.icon-plus[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&');
+}
+
+.icon-remove[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '*');
+}
+
+.icon-lock[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '(');
+}
+
+.icon-unlock[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = ')');
+}
+
+.icon-minus[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '_');
+}
+
+.icon-plus-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '+');
+}
+
+.icon-arrow-up[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '{');
+}
+
+.icon-arrow-down[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '}');
+}
+
+.icon-window[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '|');
+}
+
+.icon-bell[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = ':');
+}
+
+.icon-quote-left[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '"');
+}
+
+.icon-volume-off[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '<');
+}
+
+.icon-volume-up[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '>');
+}
+
+.icon-question-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '?');
+}

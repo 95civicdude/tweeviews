@@ -1,0 +1,497 @@
+@font-face {
+  font-family: 'PictosRegular';
+  src: url('../font/pictos-webfont.eot');
+  src: url('../font/pictos-webfont.eot?#iefix') format('embedded-opentype'), url('../font/pictos-webfont.woff') format('woff'), url('../font/pictos-webfont.ttf') format('truetype'), url('../font/pictos-webfont.svg#bvglyphsMedium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*  General styles
+    ------------------------------------------------ */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+a [class^="icon-"],
+a [class*=" icon-"] {
+  display: inline-block;
+  text-decoration: inherit;
+}
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+  vertical-align: middle;
+  font-size: 1.3333333333333333em;
+}
+.btn [class^="icon-"],
+.nav-tabs [class^="icon-"],
+.btn [class*=" icon-"],
+.nav-tabs [class*=" icon-"] {
+  /* keeps button heights with and without icons the same */
+
+  line-height: .9em;
+}
+li [class^="icon-"],
+li [class*=" icon-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+li .icon-large:before,
+li .icon-large:before {
+  /* 1.5 increased font size for icon-large * 1.25 width */
+
+  width: 1.875em;
+}
+ul.icons {
+  list-style-type: none;
+  margin-left: 2em;
+  text-indent: -0.8em;
+}
+ul.icons li [class^="icon-"],
+ul.icons li [class*=" icon-"] {
+  width: .8em;
+}
+ul.icons li .icon-large:before,
+ul.icons li .icon-large:before {
+  /* 1.5 increased font size for icon-large * 1.25 width */
+
+  vertical-align: initial;
+}
+/*  Glyph assignment
+    ------------------------------------------------------- 
+    Including [class] attribute selector for specificity, 
+    and declaring font-family on a per-glyph basis, 
+    since these styles are currently used in conjunction 
+    with Font Awesome */
+
+.icon-cloud-upload[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "c";
+}
+
+.icon-ban-circle[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "d";
+}
+
+.icon-bolt[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "e";
+}
+
+.icon-rss[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "f";
+}
+
+.icon-group[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "g";
+}
+
+.icon-info[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "i";
+}
+
+.icon-link[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "j";
+}
+
+.icon-heart[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "k";
+}
+
+.icon-th-list[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "l";
+}
+
+.icon-music[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "m";
+}
+
+.icon-note[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "n";
+}
+
+.icon-folder-close[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "o";
+}
+
+.icon-pencil[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "p";
+}
+
+.icon-comments[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "q";
+}
+
+.icon-retweet[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "r";
+}
+
+.icon-search[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "s";
+}
+
+.icon-time[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "t";
+}
+
+.icon-switch[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "u";
+}
+
+.icon-camera[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "v";
+}
+
+.icon-comment[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "w";
+}
+
+.icon-tools[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "x";
+}
+
+.icon-cog[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "y";
+}
+
+.icon-tags[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "z";
+}
+
+.icon-cloud[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "C";
+}
+
+.icon-remove-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "D";
+}
+
+.icon-eye-open[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "E";
+}
+
+.icon-file[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "F";
+}
+
+.icon-inbox[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "I";
+}
+
+.icon-resize-small[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "J";
+}
+
+.icon-key[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "K";
+}
+
+.icon-lens[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "L";
+}
+
+.icon-envelope-alt[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "M";
+}
+
+.icon-news[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "N";
+}
+
+.icon-briefcase[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "O";
+}
+
+.icon-picture[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "P";
+}
+
+.icon-off[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "Q";
+}
+
+.icon-share[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "R";
+}
+
+.icon-star[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "S";
+}
+
+.icon-plane[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "T";
+}
+
+.icon-video[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "V";
+}
+
+.icon-edit[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "W";
+}
+
+.icon-truck[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "X";
+}
+
+.icon-chart-line[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "Y";
+}
+
+.icon-chart-pie[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "Z";
+}
+
+.icon-fullscreen[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "`";
+}
+
+.icon-repeat[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "1";
+}
+
+.icon-ok-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "2";
+}
+
+.icon-ok[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "3";
+}
+
+.icon-play[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "4";
+}
+
+.icon-pause[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "5";
+}
+
+.icon-stop[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "6";
+}
+
+.icon-forward[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "7";
+}
+
+.icon-backward[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "8";
+}
+
+.icon-play-circle[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "9";
+}
+
+.icon-refresh[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "0";
+}
+
+.icon-minus-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "-";
+}
+
+.icon-battery[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "=";
+}
+
+.icon-arrow-left[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "[";
+}
+
+.icon-arrow-right[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "]";
+}
+
+.icon-calendar[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "\\";
+}
+
+.icon-random[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: ";";
+}
+
+.icon-wifi[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "'";
+}
+
+.icon-dashboard[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: ",";
+}
+
+.icon-ellipsis[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: ".";
+}
+
+.icon-print[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "/";
+}
+
+.icon-download[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "~";
+}
+
+.icon-warning-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "!";
+}
+
+.icon-map-marker[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "@";
+}
+
+.icon-trash[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "#";
+}
+
+.icon-shopping-cart[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "$";
+}
+
+.icon-money-alt[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "%";
+}
+
+.icon-flag[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "^";
+}
+
+.icon-plus[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "&";
+}
+
+.icon-remove[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "*";
+}
+
+.icon-lock[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "(";
+}
+
+.icon-unlock[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: ")";
+}
+
+.icon-minus[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "_";
+}
+
+.icon-plus-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "+";
+}
+
+.icon-arrow-up[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "{";
+}
+
+.icon-arrow-down[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "}";
+}
+
+.icon-window[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "|";
+}
+
+.icon-bell[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: ":";
+}
+
+.icon-quote-left[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: '"';
+}
+
+.icon-volume-off[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "<";
+}
+
+.icon-volume-up[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: ">";
+}
+
+.icon-question-sign[class*="icon"]:before {
+    font-family: "PictosRegular";
+    content: "?";
+}

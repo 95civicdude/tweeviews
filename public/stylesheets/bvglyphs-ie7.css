@@ -1,0 +1,52 @@
+[class^="icon-"],
+[class*=" icon-"] {
+  font-style: normal;
+  font-weight: normal;
+}
+.btn.dropdown-toggle [class^="icon-"],
+.btn.dropdown-toggle [class*=" icon-"] {
+  /* keeps button heights with and without icons the same */
+
+  line-height: 1.4em;
+}
+.icon-large {
+  font-size: 1.3333em;
+}
+/*  Glyph assignment
+    ------------------------------------------------------- 
+    Including [class] attribute selector for specificity, 
+    and declaring font-family on a per-glyph basis, 
+    since these styles are currently used in conjunction 
+    with Font Awesome */
+.icon-user[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'u&nbsp;');
+}
+.icon-power[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'p&nbsp;');
+}
+.icon-bazaar[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'b&nbsp;');
+}
+.icon-voice[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'v&nbsp;');
+}
+.icon-home[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'h&nbsp;');
+}
+.icon-link[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'A&nbsp;');
+}
+.icon-world[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'W&nbsp;');
+}
+.icon-externalLink[class*="icon"] {
+  font-family: "bvglyphsMedium";
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = 'a&nbsp;');
+}
