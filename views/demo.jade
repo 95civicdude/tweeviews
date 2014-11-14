@@ -86,22 +86,53 @@ html(lang="en")
               li
                 a(href="/campaigns") Campaigns
               li
-                a(href="/releasenotes") Release Notes
+                a(href="/docs") Documentation
           // /.nav-collapse
     .container
       div.BVTweeviewSampleDisplay
-        h2 Client Information
         if error == "not_provisioned"
           p This client does not have Tweeviews configured. Please 
             a(href="/clients") provision 
             them to start a campaign.
           p For an example of a client with Tweeviews, visit the 
-            a(href="/demo/jeffs-testcompany/566") jeffs-testcompany 
+            a(href="/demo/jeffs-testcompany") jeffs-testcompany 
             demo page.
         else
-          div.BVTClientInfo
-            p Client: #{clientName} (API Key: #{apiKey})
-            p ProductId: #{productId}
+          div.BVTInfoContainer
+            div.BVTClientInfo
+              h2 Client Information
+              ul
+                li 
+                  span.title Client: 
+                  span #{clientName} 
+                li 
+                  span.title API Key: 
+                  span #{apiKey}
+                li 
+                  span.title Encoding Key: 
+                  span #{encodingKey}
+                li 
+                  span.title Twitter Handle: 
+                  span #{twitterHandle}
+                li 
+                  span.title Consumer Key: 
+                  span #{consumerKey}
+                li 
+                  span.title Consumer Secret: 
+                  span #{consumerSecret}
+                li 
+                  span.title Access Token Key: 
+                  span #{accessTokenKey}
+                li 
+                  span.title Access Token Secret: 
+                  span #{accessTokenSecret}
+            div.BVTProductInfo
+              h2 Product Information
+              ul
+                each prod in products
+                  li
+                    a(href="/demo/#{clientName}/#{prod.externalId}") #{prod.externalId}
+        if productId 
           h3 BVTweeviewsSummary Container
           div.BVTweeviewsSummary(data-id="#{productId}")
           h3 BVTweeviews Container

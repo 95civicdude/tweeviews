@@ -26,7 +26,15 @@ form.tvclients {padding: 30px; width: 330px;}
 /** Demo **/
 .demo_container {margin-top: 40px;}
 .BVTweeviewSampleDisplay {margin-top: 30px;}
-.BVTClientInfo {padding-left: 10px;}
+
+.BVTInfoContainer {height: 250px;}
+.BVTInfoContainer ul {margin: 0;}
+.BVTInfoContainer li {list-style-type: none;}
+.BVTInfoContainer span.title {font-weight: bold;}
+
+.BVTClientInfo {float: left; width: 600px;}
+.BVTProductInfo {float: left;}
+
 .BVTweeviewsSummary {padding-left: 10px;}
 .BVTweeviews {padding-left: 10px;}
 .TVEndCampaign {float: left; margin-left:30px; width: 290px;}

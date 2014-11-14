@@ -84,12 +84,30 @@ html(lang="en")
               li
                 a(href="/campaigns") Campaigns
               li.active
-                a(href="/releasenotes") Release Notes
+                a(href="/docs") Documentation
           // /.nav-collapse
     .container
       div.BVTweeviewSampleDisplay
-        h2 Release Notes
+        h2 Submitting a Tweeview
         p To submit a Tweeview, tweet to @clientname with #productHashtag and your #rating (#5stars, #3stars, etc).
+        h2 Integration Code
+        pre 
+          | // Connect to Bazaarvoice Tweeviews
+          | &lt;script type="text/javascript" src=”/js/bvSnippets.js”>
+          | 
+          | // Modify or set location of containers
+          | &lt;script type="text/javascript">     
+          |  $(".BVTweeviewsSummary").tweeviewsSummary('&lt;API_Key>', { staging: true });
+          |  $(".BVTweeviews").tweeviews('&lt;API_Key>', { staging: true });
+          | &lt;script type="text/javascript">
+          | 
+          | // Tweeviews Summary Container
+          | &lt;div data-id=”&lt;productId>" class="BVTweeviewsSummary">&lt;/div>
+          | 
+          | // Tweeviews Main Container
+          | &lt;div data-id=”&lt;productId>" class="BVTweeviews">&lt;/div>
+        h2 Release Notes
+        p soon
         // /container
     //
        Le javascript

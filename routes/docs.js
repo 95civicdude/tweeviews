@@ -1,3 +1,3 @@
 exports.display = function(req, res) {
-    res.render("releasenotes");
+    res.render("docs");
 };
