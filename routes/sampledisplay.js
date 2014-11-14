@@ -43,20 +43,18 @@ var getClientApiKey = function(clientName, callback) {
 };
 
 var getClientList = function(callback) {
-    // dbConnection.getClientsCollection(function(clients) {
-    //     // TODO: place all client names in an array to callback
-    //     clients.find({
-    //         "name" : clientName
-    //     }).toArray(function(err, docs) {
-    //         if (err) {
-    //             throw err;
-    //         }
+    dbConnection.getClientsCollection(function(clients) {
+        // TODO: place all client names in an array to callback
+        clients.find().toArray(function(err, clientData) {
+            if (err) {
+                throw err;
+            }
 
-    //         if (docs && docs.length) {
-    //             callback(docs);
-    //         }
-    //         else {callback(null);} 
-    //     });
-    // });
+            if (clientData && clientData.length) {
+                callback(clientData);
+            }
+            else {callback(null);} 
+        });
+    });
     
 };

@@ -108,6 +108,17 @@ html(lang="en")
                 input(type='submit',value='Start Tweeting',data-transition='fade', data-theme='c')
         script
             $('#formList').on('submit', function(e) { e.preventDefault(); })
+      div.TVEndCampaign
+        form(action='/campaigns/end', method='post')
+          div#endCampaignDiv(data-role='fieldcontain')
+            legend End Campaign
+            fieldset(data-role='controlgroup')
+              label(for='endClientName') Client Name
+                input(id='endClientName',type='text',placeholder='jeffs-testcompany',name='endClientName')
+              label(for='endProductExternalId') Product ID
+                input(id='endProductExternalId',type='text',placeholder='externalId',name='endProductExternalId')
+          div(data-role='fieldcontain')
+              input(type='submit',value='End Campaign',data-transition='fade', data-theme='c')
       div.TVListCampaigns
         form(action='/campaigns/list', method='post')
           div#clientListDiv(data-role='fieldcontain')
@@ -122,17 +133,6 @@ html(lang="en")
               p= 'Hashtag: ExternalId (API Key)'
               - each client in clientProducts
                   li= client.hashTag + ': ' + client.externalId + ' (' + apiKey + ')'
-      div.TVEndCampaign
-        form(action='/campaigns/end', method='post')
-          div#endCampaignDiv(data-role='fieldcontain')
-            legend End Campaign
-            fieldset(data-role='controlgroup')
-              label(for='endClientName') Client Name
-                input(id='endClientName',type='text',placeholder='jeffs-testcompany',name='endClientName')
-              label(for='endProductExternalId') Product ID
-                input(id='endProductExternalId',type='text',placeholder='externalId',name='endProductExternalId')
-          div(data-role='fieldcontain')
-              input(type='submit',value='End Campaign',data-transition='fade', data-theme='c')
 
     // /container
     //

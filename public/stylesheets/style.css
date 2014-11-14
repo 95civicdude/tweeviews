@@ -4,7 +4,7 @@ body {font: 14px Helvetica, Arial, sans-serif; padding: 0; margin: 0;}
 	a:hover {color: #5ea9dd;}*/
 .TVCampaigns, .listcampaigns {width: 290px; float: left;}
 .listcampaigns {padding-top: 0;}
-.TVListCampaigns {width: 350px; float: left; margin-left: 30px;}
+.TVListCampaigns {width: 290px; float: left; margin-left: 30px;}
 	.TVListCampaigns form {border: 0; border-radius: 10px;}
 	.TVListCampaigns form label {color: #292f33; padding-right: 10px;}
 	.TVListCampaigns form label input {margin-left: 10px;}
@@ -29,6 +29,7 @@ form.tvclients {padding: 30px; width: 330px;}
 .BVTClientInfo {padding-left: 10px;}
 .BVTweeviewsSummary {padding-left: 10px;}
 .BVTweeviews {padding-left: 10px;}
+.TVEndCampaign {float: left; margin-left:30px; width: 290px;}
 
 form.tvclients {width: 100%; padding: 0;}
 .form-fieldset-basicinfo {float: left; margin-right:30px; width: 290px;}
