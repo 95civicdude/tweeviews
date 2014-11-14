@@ -8,6 +8,8 @@ var routes = require('./routes');
 var campaigns = require('./routes/campaigns');
 var clients = require('./routes/clients');
 var sampledisplay = require('./routes/sampledisplay');
+var demo = require('./routes/demo');
+var releasenotes = require('./routes/releasenotes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -33,9 +35,12 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/demo', demo.display);
+app.get('/demo/:clientName/:productId', demo.display);
 app.get('/display', routes.display);
 app.get('/clients', clients.display);
 app.get('/campaigns', campaigns.display);
+app.get('/releasenotes', releasenotes.display);
 app.get('/sampledisplay/:clientName/:hashTag', sampledisplay.display);
 
 // GET /p/5

@@ -11,6 +11,17 @@ exports.display = function(req, res) {
                 res.render("sampledisplay", {clientName: req.param("clientName"), hashTag: req.param("hashTag"), apiKey: apiKey});
             }
 		});
+    // getClientList(
+    //     function(clientList) {
+    //         console.log(clientList);
+    //         if(!apiKey){
+    //             res.render("sampledisplay", {error2: "no_clients"});
+    //         }
+    //         else{
+    //             res.render("sampledisplay", {clientList: clientList});
+    //         }
+    //     }
+    // )
 };
 
 
@@ -29,4 +40,23 @@ var getClientApiKey = function(clientName, callback) {
             else {callback(null);}
         });
     });
+};
+
+var getClientList = function(callback) {
+    // dbConnection.getClientsCollection(function(clients) {
+    //     // TODO: place all client names in an array to callback
+    //     clients.find({
+    //         "name" : clientName
+    //     }).toArray(function(err, docs) {
+    //         if (err) {
+    //             throw err;
+    //         }
+
+    //         if (docs && docs.length) {
+    //             callback(docs);
+    //         }
+    //         else {callback(null);} 
+    //     });
+    // });
+    
 };
