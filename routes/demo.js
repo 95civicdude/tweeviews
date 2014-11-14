@@ -10,10 +10,13 @@ exports.display = function(req, res) {
             }
             else{
                 // TODO: pass list of all clients getClientList
+                getlick 
                 res.render("demo", {productId: req.param("productId"), clientData: clientData, clientName: clientData.name, apiKey: clientData.apiKey, encodingKey: clientData.encodingKey, twitterHandle: clientData.twitterHandle, consumerKey: clientData.consumerKey, consumerSecret: clientData.consumerSecret, accessTokenKey: clientData.accessTokenKey, accessTokenSecret: clientData.accessTokenSecret, products: clientData.products});
             }
         }
     );
+
+    
 
     // getClientList(
     //     function(clientList) {

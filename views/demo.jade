@@ -132,6 +132,7 @@ html(lang="en")
                 each prod in products
                   li
                     a(href="/demo/#{clientName}/#{prod.externalId}") #{prod.externalId}
+                    span &nbsp;: #{prod.hashTag} (Start: #{prod.start} End: #{prod.end})
         if productId 
           h3 BVTweeviewsSummary Container
           div.BVTweeviewsSummary(data-id="#{productId}")

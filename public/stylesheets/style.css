@@ -24,6 +24,8 @@ form.tvclients {padding: 30px; width: 330px;}
 .listcampaigns ul p {font-weight: bold; border-bottom: 2px solid #e1e8ed; padding-bottom: 10px;}
 
 /** Demo **/
+.container h3 {line-height: 20px;}
+
 .demo_container {margin-top: 40px;}
 .BVTweeviewSampleDisplay {margin-top: 30px;}
 
