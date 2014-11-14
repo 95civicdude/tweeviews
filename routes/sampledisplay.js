@@ -4,9 +4,12 @@ exports.display = function(req, res) {
 	getClientApiKey(
 		req.param("clientName"), 
 		function(apiKey){
-			if(!apiKey)
+			if(!apiKey){
 				res.render("sampledisplay", {error: "not_provisioned"});
-			else res.render("sampledisplay", {clientName: req.param("clientName"), hashTag: req.param("hashTag"), apiKey: apiKey});
+            }
+			else{
+                res.render("sampledisplay", {clientName: req.param("clientName"), hashTag: req.param("hashTag"), apiKey: apiKey});
+            }
 		});
 };
 

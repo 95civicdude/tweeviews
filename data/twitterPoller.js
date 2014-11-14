@@ -98,7 +98,7 @@ var submitReview = function(client, status, productId, rating) {
     }
 
     if (status.user.profile_image_url) {
-        review.thirdpartyphotourl_1 = status.user.profile_image_url;
+        review.photourl_1 = status.user.profile_image_url;
     }
 
     bvsubmit.postReview(client,review);
@@ -120,7 +120,7 @@ var startSearchPoll = function(client) {
 
         getLastTweetSeen(client.name, function(lastTweetSeen) {
             if (lastTweetSeen) {
-                searchParams.since_id = String(lastTweetSeen);
+                // searchParams.since_id = String(lastTweetSeen);
             }
         });
 
