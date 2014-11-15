@@ -27,17 +27,18 @@ The app expects the documents in the mongo collection to have this format:
     "consumerSecret": "xxxxxxxxx",  // client-specific Twitter API consumer secret
     "accessTokenKey": "xxxxxxxxx",  // client-specific Twitter API access token key
     "accessTokenSecret": "xxxxxxxxx",   // client-specific Twitter API access token secret
+    "searchInterval" : 0,           // milliseconds between Twitter searches (0 to stop searching)
     "products" : [                  // array of products with Teeviews campaigns
         {
             "externalId" : "0000",  // BV product id
-            "hashTag" : "#tag",     // hashtag to identify the product on Twitter
-            "start" : 000000000,    // integer value representing the start of the product's Tweeviews campaign
-            "end" : 000000000       // integer value representing the end of the product's Tweeviews campaign
+            "hashTag" : "tag",      // hashtag to identify the product on Twitter (note: no hash sign)
+            "start" : 0000000000000,    // start date of the campaign (milliseconds since Unix epoch)
+            "end" : 0000000000000       // end date of the campaign (milliseconds since Unix epoch)
         },
         {
             "externalId" : "0001",
             "hashTag" : "#tag2",
-            "start" : 000000000,
+            "start" : 0000000000000,
             "end" : null            // note: end may be null
         }
     ]

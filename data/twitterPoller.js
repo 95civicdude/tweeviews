@@ -3,27 +3,15 @@ var config = require("../config.js").data.twitterPoller;
 var twitter = require("twitter");
 var bvsubmit = require("bvsubmit");
 
-var ratings = {
-    "1star" : 1,
-    "2star" : 2,
-    "3star" : 3,
-    "4star" : 4,
-    "5star" : 5,
-    "1stars" : 1,
-    "2stars" : 2,
-    "3stars" : 3,
-    "4stars" : 4,
-    "5stars" : 5,
-    "onestar" : 1,
-    "twostar" : 2,
-    "threestar" : 3,
-    "fourstar" : 4,
-    "fivestar" : 5,
-    "onestars" : 1,
-    "twostars" : 2,
-    "threestars" : 3,
-    "fourstars" : 4,
-    "fivestars" : 5,
+var clientNameToInterval = {};
+var clientNameToTwitter = {};
+var hashTagToRating = {
+    "1star" :     1, "2star" :     2, "3star" :       3, "4star" :      4, "5star" :      5,
+    "1stars" :    1, "2stars" :    2, "3stars" :      3, "4stars" :     4, "5stars" :     5,
+    "onestar" :   1, "twostar" :   2, "threestar" :   3, "fourstar" :   4, "fivestar" :   5,
+    "onestars" :  1, "twostars" :  2, "threestars" :  3, "fourstars" :  4, "fivestars" :  5,
+    "one_star" :  1, "two_star" :  2, "three_star" :  3, "four_star" :  4, "five_star" :  5,
+    "one_stars" : 1, "two_stars" : 2, "three_stars" : 3, "four_stars" : 4, "five_stars" : 5
 };
 
 var setLastTweetSeen = function(clientName, tweetId) {
@@ -58,35 +46,9 @@ var getLastTweetSeen = function(clientName, callback) {
     });
 };
 
-var getProductIds = function(clientName, callback) {
-    dbConnection.getCollection(function(clients) {
-        clients.find({
-            "name" : clientName
-        }).toArray(function(err, docs) {
-            if (err) {
-                throw err;
-            }
-
-            if (docs && docs.length) {
-                var client = docs[0];
-
-                if (client.products && client.products.length) {
-                    var productIds = [];
-
-                    for (var i = 0; i < client.products.length; i++) {
-                        productIds[client.products[i].hashTag.substr(1).toLowerCase()] = client.products[i].externalId;
-                    };
-
-                    callback(productIds);
-                }
-            }
-        });
-    });
-};
-
 var submitReview = function(client, status, productId, rating) {
     var review = {
-        "userid" : String(status.user.id),
+        "userid" : status.user.id_str,
         "usernickname" : "@" + status.user.screen_name,
         "productid" : productId,
         "rating" : rating,
@@ -104,84 +66,168 @@ var submitReview = function(client, status, productId, rating) {
     bvsubmit.postReview(client,review);
 };
 
-var startSearchPoll = function(client) {
-    if (client.consumerKey && client.consumerSecret && client.accessTokenKey && client.accessTokenSecret && client.products && client.products.length) {
-        var t = new twitter({
+var buildHashTagToProductIdMapping = function(clientDoc) {
+    var hashTagsToProductIds = {};
+
+    for (var i = 0; i < clientDoc.products.length; i++) {
+        hashTagsToProductIds[clientDoc.products[i].hashTag.toLowerCase()] = clientDoc.products[i].externalId;
+    }
+
+    return hashTagsToProductIds;
+};
+
+var searchTwitterForReviews = function(client, hashTagsToProductIds) {
+    var searchParams = {
+        "include_entities" : true
+    };
+
+    if (client.lastTweetSeen) {
+        searchParams.since_id = client.lastTweetSeen;
+    }
+
+    if (!clientNameToTwitter[client.name]) {
+        clientNameToTwitter[client.name] = new twitter({
             "consumer_key": client.consumerKey,
             "consumer_secret": client.consumerSecret,
             "access_token_key": client.accessTokenKey,
             "access_token_secret": client.accessTokenSecret
         });
-
-        var sinceIdRegexp = /\?since_id=([0-9]+).+/;
-        var rating = null;
-        var review = null;
-        var searchParams = {};
-
-        getLastTweetSeen(client.name, function(lastTweetSeen) {
-            if (lastTweetSeen) {
-                // searchParams.since_id = String(lastTweetSeen);
-            }
-        });
-
-        setInterval(function() {
-            getProductIds(client.name, function(productIds) {
-                t.search("@" + client.twitterHandle + " +exclude:retweets", searchParams, function(results) {
-                    if (results && results.statuses && results.statuses.length) {
-                        var hashTags = null;
-                        var productId = null;
-                        var statuses = results.statuses;
-
-                        console.log("new tweets: " + statuses.length);
-
-                        for (var i = 0; i < statuses.length; i++) {
-                            console.log(statuses[i].text);
-
-                            if (statuses[i].entities && statuses[i].entities.hashtags) {
-                                productId = null;
-                                rating = 0;
-                                hashTags = statuses[i].entities.hashtags;
-
-                                for (var j = 0; j < hashTags.length && (!productId || !rating); j++) {
-                                    productId = productId || productIds[hashTags[j].text.toLowerCase()];
-                                    rating = rating || ratings[hashTags[j].text.toLowerCase()];
-                                }
-
-                                if (productId && rating) {
-                                    console.log("found tweet for product|productId=" + productId + "|rating=" + rating);
-                                    submitReview(client, statuses[i], productId, String(rating));
-                                }
-                            }
-                        }
-
-                        searchParams.since_id = sinceIdRegexp.exec(results.search_metadata.refresh_url)[1];
-                        setLastTweetSeen(client.name, searchParams.since_id);
-                    }
-                });
-            });
-        }, config.pollingInterval);
-    } else {
-        console.log("missing Twitter credentials|client=" + JSON.stringify(client));
     }
+
+    clientNameToTwitter[client.name].search("@" + client.twitterHandle + " +exclude:retweets", searchParams, function(results) {
+        if (results && results.statuses) {
+            console.log("client.name=" + client.name + "|results.statuses.length=" + results.statuses.length);
+
+            var maxStatusId = 0;
+            var status = null;
+            var hashTags = null;
+            var hashTag = null;
+            var rating = 0;
+            var productId = null;
+
+            for (var i = 0; i < results.statuses.length; i++) {
+                status = results.statuses[i];
+                maxStatusId = Math.max(status.id, maxStatusId);
+                hashTags = status.entities.hashTags;
+
+                if (hashTags) {
+                    productId = null;
+                    rating = 0;
+
+                    for (var h = 0; h < hashTags.length && (!productId || !rating); h++) {
+                        hashTag = hashTags[h].text.toLowerCase();
+                        productId = productId || hashTagsToProductIds[hashTag];
+                        rating = rating || hashTagToRating[hashTag];
+                    }
+
+                    if (productId && rating) {
+                        console.log("found tweeview|productId=" + productId +
+                                                  "|rating=" + rating +
+                                                  "|user.screen_name=" + status.user.screen_name +
+                                                  "|status.text=" + status.text);
+                        // submitReview(client, status, productId, rating);
+                    }
+                }
+            }
+
+            // setLastTweetSeen(client.name, maxStatusId);
+        }
+    });
 };
 
-var start = function() {
-    if (config.pollingInterval > 0) {
-        dbConnection.getCollection(function(clients) {
-            clients.find().each(function(err, client) {
+var startTwitterPoller = function(clientName, searchInterval) {
+    clientNameToInterval[clientName] = setInterval(function() {
+        var currentDate = Date.now();
+
+        dbConnection.getCollection(function(clientsCollection) {
+            clientsCollection.findOne({
+                "name" : clientName,
+                "searchInterval" : { $gt : 0 },
+                "products.start" : { $lte : currentDate },
+                $or : [
+                    { "products.end" : null },
+                    { "products.end" : { $gt : currentDate } }
+                ]
+            }, function(err, clientDoc) {
                 if (err) {
+                    console.log("error while searching for client|clientName=" + clientName);
                     throw err;
                 }
 
-                if (client) {
-                    console.log("starting twitterPoller|client=" + client + "|pollingInterval=" + config.pollingInterval + "ms");
-                    startSearchPoll(client);
+                if (clientDoc) {
+                    searchTwitterForReviews(clientDoc, buildHashTagToProductIdMapping(clientDoc));
+                } else {
+                    console.log("failed to find client. do they have active campaigns?|clientName=" + clientName);
                 }
             });
         });
-    } else {
-        console.log("twitterPoller will not start. invalid polling interval|pollingInterval=" + config.pollingInterval + "ms");
+    }, searchInterval);
+};
+
+var stopPollingForClient = function(clientName) {
+    if (clientNameToInterval[clientName]) {
+        clearInterval(clientNameToInterval[clientName]);
+        delete clientNameToInterval[clientName];
+    }
+
+    if (clientNameToTwitter[clientName]) {
+        delete clientNameToTwitter[clientName];
     }
 };
 
-exports.start = start;
+var stopPollingForAllClients = function() {
+    for (var clientName in clientNameToInterval) {
+        stopPollingForClient(clientName);
+    }
+};
+
+var startPollingForClient = function(clientName) {
+    dbConnection.getCollection(function(clientsCollection) {
+        // find the client by name, and also check whether they have Twitter
+        // credentials, a valid search interval, and active campaigns
+        clientsCollection.findOne({
+            "name" : clientName,
+            "consumer_key" : { $exists : true },
+            "consumer_key": { $exists : true },
+            "consumer_secret": { $exists : true },
+            "access_token_key": { $exists : true },
+            "access_token_secret": { $exists : true }
+        }, function(err, clientDoc) {
+            if (err) {
+                console.log("error while searching for client|clientName=" + clientName);
+                throw err;
+            }
+
+            if (clientDoc) {
+                if (clientNameToInterval[clientName]) {
+                    stopPollingForClient(clientName);
+                }
+
+                startTwitterPoller(clientName, clientDoc.searchInterval);
+            } else {
+                console.log("failed to find client. do they have Twitter credentials? is their search interval set?|clientName=" + clientName);
+            }
+        });
+    });
+};
+
+var startPollingForAllClients = function() {
+    dbConnection.getCollection(function(clientsCollection) {
+        clientsCollection.find().each(function(err, clientDoc) {
+            if (err) {
+                console.log("error while retreiving all client docs.");
+                throw err;
+            }
+
+            if (clientDoc) {
+                console.log("starting Twitter poller|clientDoc.name=" + clientDoc.name);
+                startPollingForClient(clientDoc.name);
+            }
+        });
+    });
+};
+
+exports.startPollingForClient = startPollingForClient;
+exports.startPollingForAllClients = startPollingForAllClients;
+exports.stopPollingForClient = stopPollingForClient;
+exports.stopPollingForAllClients = stopPollingForAllClients;
