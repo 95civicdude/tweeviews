@@ -1,5 +1,4 @@
 var dbConnection = require("./dbConnection.js");
-var config = require("../config.js").data.twitterPoller;
 var twitter = require("twitter");
 var bvsubmit = require("bvsubmit");
 

@@ -1,9 +1,11 @@
-// parent object for data-level configurations
+// parent objects
 var data = {};
+var routes = {};
 
-/*********************
+
+/********************
  data/dbConnection.js
- *********************/
+ ********************/
 data.dbConnection = {
     "server" : "hackathon.ts.bazaarvoice.com",
     "port" : 27017,
@@ -13,11 +15,14 @@ data.dbConnection = {
 // assumes mongo
 data.dbConnection.url = "mongodb://" + data.dbConnection.server + ":" + data.dbConnection.port + "/" + data.dbConnection.database;
 
-/**********************
- data/twitterPoller.js
- **********************/
-data.twitterPoller = {
-    "pollingInterval" : 0 // in millisenconds
+
+/*****************
+ routes/clients.js
+ *****************/
+routes.clients = {
+    "defaultSearchInterval" : 600000
 };
 
+
 exports.data = data;
+exports.routes = routes;

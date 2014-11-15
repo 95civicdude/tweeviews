@@ -13,6 +13,7 @@ var docs = require('./routes/docs');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var twitterPoller = require('./data/twitterPoller.js');
 
 var app = express();
 
@@ -56,6 +57,7 @@ process.on('SIGINT', function() {
   process.exit();
 });
 process.on('exit', function() {
+    twitterPoller.stopPollingForAllClients();
     var dbConnection = require('./data/dbConnection.js');
 
     console.log("closing db connection...");
@@ -63,7 +65,7 @@ process.on('exit', function() {
 });
 
 console.log("starting Twitter poller...");
-require('./data/twitterPoller.js').start();
+twitterPoller.startPollingForAllClients();
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

@@ -1,14 +1,15 @@
+var config = require("../config.js").routes.clients;
 var dbConnection = require('../data/dbConnection.js');
 
 exports.create = function(req, res) {
-    dbConnection.getClientsCollection(function(clients) {
+    dbConnection.getCollection(function(clientsCollection) {
         var twitterHandle = req.body.twitterHandle;
 
         if (twitterHandle[0] === "@") {
             twitterHandle = twitterHandle.substr(1);
         }
 
-        clients.update({
+        clientsCollection.update({
             "name" : req.body.name
         }, {
             $set : {
@@ -19,7 +20,8 @@ exports.create = function(req, res) {
                 "consumerKey": req.body.consumerKey,
                 "consumerSecret": req.body.consumerSecret,
                 "accessTokenKey": req.body.accessTokenKey,
-                "accessTokenSecret": req.body.accessTokenSecret
+                "accessTokenSecret": req.body.accessTokenSecret,
+                "searchInterval" : config.defaultSearchInterval
             }
         }, {
             "upsert" : true
@@ -36,8 +38,8 @@ exports.create = function(req, res) {
 exports.display = function(req, res) {
     var clientNames = [];
 
-    dbConnection.getClientsCollection(function(clients) {
-        clients.find().each(function(err, client) {
+    dbConnection.getCollection(function(clientsCollection) {
+        clientsCollection.find().each(function(err, client) {
             if (err) {
                 throw err;
             }
