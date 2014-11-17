@@ -58,11 +58,27 @@ var submitReview = function(client, status, productId, rating) {
         review.location = status.user.location;
     }
 
+    var photoUrlPrefix = "photourl_";
+    var photoUrlCount = 1;
+
     if (status.user.profile_image_url) {
-        review.photourl_1 = status.user.profile_image_url;
+        // the avatar is always at photourl_1
+        // remove _normal from the photo url because we want the original size
+        review[photoUrlPrefix + photoUrlCount] = status.user.profile_image_url.replace("_normal.", ".");
     }
 
-    bvsubmit.postReview(client,review);
+    if (status.entities.media) {
+        var media = status.entities.media;
+
+        // the avatar is always at photourl_1 and all other images are photourl_2+
+        photoUrlCount++;
+
+        for (var i = 0; i < media.length; i++) {
+            review[photoUrlPrefix + photoUrlCount++] = media[i].media_url;
+        }
+    }
+
+    bvsubmit.postReview(client, review);
 };
 
 var buildHashTagToProductIdMapping = function(clientDoc) {
@@ -95,7 +111,7 @@ var searchTwitterForReviews = function(client, hashTagsToProductIds) {
 
     clientNameToTwitter[client.name].search("@" + client.twitterHandle + " +exclude:retweets", searchParams, function(results) {
         if (results && results.statuses) {
-            console.log("client.name=" + client.name + "|results.statuses.length=" + results.statuses.length);
+            console.log("found tweets.|client.name=" + client.name + "|results.statuses.length=" + results.statuses.length);
 
             var maxStatusId = 0;
             var status = null;
@@ -107,7 +123,9 @@ var searchTwitterForReviews = function(client, hashTagsToProductIds) {
             for (var i = 0; i < results.statuses.length; i++) {
                 status = results.statuses[i];
                 maxStatusId = Math.max(status.id, maxStatusId);
-                hashTags = status.entities.hashTags;
+                hashTags = status.entities.hashtags;
+
+                console.log("tweeview candidate|client.name=" + client.name + "|status.id_str" + status.id_str);
 
                 if (hashTags) {
                     productId = null;
@@ -120,16 +138,18 @@ var searchTwitterForReviews = function(client, hashTagsToProductIds) {
                     }
 
                     if (productId && rating) {
-                        console.log("found tweeview|productId=" + productId +
-                                                  "|rating=" + rating +
-                                                  "|user.screen_name=" + status.user.screen_name +
-                                                  "|status.text=" + status.text);
-                        // submitReview(client, status, productId, rating);
+                        console.log("found tweeview.|client.name=" + client.name +
+                                                   "|productId=" + productId +
+                                                   "|rating=" + rating +
+                                                   "|status.user.screen_name=" + status.user.screen_name +
+                                                   "|status.id_str=" + status.id_str +
+                                                   "|status.text=" + status.text);
+                        submitReview(client, status, productId, rating);
                     }
                 }
             }
 
-            // setLastTweetSeen(client.name, maxStatusId);
+            setLastTweetSeen(client.name, maxStatusId);
         }
     });
 };
@@ -186,11 +206,10 @@ var startPollingForClient = function(clientName) {
         // credentials, a valid search interval, and active campaigns
         clientsCollection.findOne({
             "name" : clientName,
-            "consumer_key" : { $exists : true },
-            "consumer_key": { $exists : true },
-            "consumer_secret": { $exists : true },
-            "access_token_key": { $exists : true },
-            "access_token_secret": { $exists : true }
+            "consumerKey" : { $exists : true },
+            "consumerSecret": { $exists : true },
+            "accessTokenKey": { $exists : true },
+            "accessTokenSecret": { $exists : true }
         }, function(err, clientDoc) {
             if (err) {
                 console.log("error while searching for client|clientName=" + clientName);
