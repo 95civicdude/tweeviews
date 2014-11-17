@@ -1,19 +1,21 @@
 var config = require("../config.js").routes.clients;
 var dbConnection = require('../data/dbConnection.js');
+var twitterPoller = require('../data/twitterPoller.js');
 
 exports.create = function(req, res) {
     dbConnection.getCollection(function(clientsCollection) {
+        var clientName = req.body.name;
         var twitterHandle = req.body.twitterHandle;
 
-        if (twitterHandle[0] === "@") {
+        if ("@" === twitterHandle[0]) {
             twitterHandle = twitterHandle.substr(1);
         }
 
         clientsCollection.update({
-            "name" : req.body.name
+            "name" : clientName
         }, {
             $set : {
-                "name" : req.body.name,
+                "name" : clientName,
                 "apiKey" : req.body.apiKey,
                 "encodingKey" : req.body.encodingKey,
                 "twitterHandle" : twitterHandle,
@@ -25,14 +27,15 @@ exports.create = function(req, res) {
             }
         }, {
             "upsert" : true
-        }, function (err) {
+        }, function (err, result) {
             if (err) {
                 throw err;
             }
+
+            twitterPoller.startPollingForClient(clientName);
+            res.redirect("clients");
         });
     });
-
-    res.redirect("clients");
 };
 
 exports.display = function(req, res) {

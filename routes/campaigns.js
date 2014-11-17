@@ -7,8 +7,8 @@ exports.addOrUpdate = function(req, res) {
     var campaignStart = req.body.campaignStart;
     var campaignEnd = req.body.campaignEnd;
 
-    if ("#" !== productHashTag[0]) {
-        productHashTag = "#" + productHashTag;
+    if ("#" === productHashTag[0]) {
+        productHashTag = productHashTag.substr(1);
     }
 
     if (campaignStart) {
@@ -72,6 +72,7 @@ exports.addOrUpdate = function(req, res) {
                     } else {
                         console.log("failed to update client's campaigns|clientName=" + clientName);
                     }
+
                     res.redirect("campaigns");
                 });
             }
@@ -80,9 +81,13 @@ exports.addOrUpdate = function(req, res) {
 };
 
 exports.end = function(req, res) {
-    var campaignEnd = Date.now();
     var clientName = req.body.clientName;
     var productExternalId = req.body.productExternalId;
+    var campaignEnd = req.body.campaignEnd;
+
+    if (!campaignEnd) {
+        campaignEnd = Date.now();
+    }
 
     dbConnection.getCollection(function(clients) {
         clients.update({

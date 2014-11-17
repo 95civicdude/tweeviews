@@ -37,7 +37,7 @@ The app expects the documents in the mongo collection to have this format:
         },
         {
             "externalId" : "0001",
-            "hashTag" : "#tag2",
+            "hashTag" : "tag2",
             "start" : 0000000000000,
             "end" : null            // note: end may be null
         }
