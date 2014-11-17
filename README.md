@@ -54,18 +54,20 @@ Working with Client Documents
     ```
     var dbConnection = require("dbConnection.js");
 
-    dbConnection.getCollection(function(clients) {
+    dbConnection.getCollection(function(clientsCollection) {
         // find a client by name
-        clients.find({
+        clientsCollection.find({
             "name" : "clientName"
         // loop over each client found with the given name
-        }).each(function(err, client) {
+        }).each(function(err, clientDoc) {
             if (err) {
                 throw err;
             }
 
-            // do stuff with each client document
-            console.log(JSON.stringify(client, null, "    "));
+            if (clientDoc) {
+                // do stuff with the client document
+                console.log(JSON.stringify(clientDoc, null, "    "));
+            }
         });
     });
     ```
