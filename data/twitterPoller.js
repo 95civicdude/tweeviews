@@ -65,6 +65,7 @@ var submitReview = function(client, status, productId, rating) {
         // the avatar is always at photourl_1
         // remove _normal from the photo url because we want the original size
         review[photoUrlPrefix + photoUrlCount] = status.user.profile_image_url.replace("_normal.", ".");
+        review.avatar = photoUrlPrefix + photoUrlCount;
     }
 
     if (status.entities.media) {
