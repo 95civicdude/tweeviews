@@ -19,8 +19,6 @@
 *.rar
 *.tar
 *.zip
-/node_modules
-!/node_modules/bvsubmit
 
 # Logs and databases #
 ######################
