@@ -36,3 +36,13 @@ db/**
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# External modules #
+####################
+# ignore things installed via package managers (e.g. npm) because they should
+# be installed and managed locally
+# without *, we won't be able to add bvsubmit as an exception
+node_modules/*
+
+# add exception for bvsubmit because it was custom made for this app
+!node_modules/bvsubmit/
