@@ -10,7 +10,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "bunyan" : "*",
     "express": "*",
     "jade": "*",
     "mongodb" : "*",
