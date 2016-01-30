@@ -1,20 +1,64 @@
-EXTERNAL DEPENDENCIES
-=====================
-You must have node and npm installed. From Terminal:
+# tweeviews
 
+Collect reviews via Twitter.
+
+## Review Format
+
+A tweet is considered a review if it's of the following format:
+
+> @client #ratingHashTag #productHashTag review text
+
+For example:
+
+> @tshacktoberfest The #vue stroller is like a race car for my niece.  She loves the cup holders! #5stars #durable
+
+(source: https://twitter.com/mitchheard/status/534465429800890370)
+
+## Local Environment Setup
+
+### MongoDB
+
+First, install/update and start MongoDB:
+```bash
+# alternatively, run `brew upgrade --cleanup mongodb` if mongodb is already installed
+brew install mongodb
+# you can create and use any dbpath, just DO NOT use a directory within this repo!
+mkdir ~/_mongodb
+mongod --dbpath ~/_mongodb/
 ```
-> brew install node
+
+Then, open a new Terminal and create the tweeviews database:
+```bash
+# start mongo shell (automatically connects to localhost)
+mongo
+# create and switch to the tweeviews db
+> use tweeviews
+# create an un-capped collection to avoid deleting old data when at-cap
+> db.createCollection("clients", {capped: false})
+# exit or stay, whatever
+> exit
 ```
 
-Then, after pulling down the project from git, run `npm` in from the project's root directory:
+### Node
 
-````
-> npm start
-````
+At this point, you can clone the repo and run the app:
+```bash
+# alternatively, run `brew upgrade --cleanup node` if node is already installed
+brew install node
+git clone git@github.com:95civicdude/tweeviews.git
+cd tweeviews
+npm install
+npm start
+```
 
-CLIENT RECORD SCHEMA
-====================
-The app expects the documents in the mongo collection to have this format:
+### Tweeviews Administration
+
+To add or update a client: http://localhost:3000/clients/  
+To add, update, or end a campaign: http://localhost:3000/campaigns/
+
+## Client Document Schema
+
+The app expects the following mongodb document format:
 
 ```
 {
@@ -45,40 +89,47 @@ The app expects the documents in the mongo collection to have this format:
 }
 ```
 
-Working with Client Documents
------------------------------
-1. To work in the db, directly, launch `mongo` in Terminal, connecting to the hackathon server instance. Ask around for the server URL. Then, run mongo commands against the tweeviews database and clients collection. See the [mongodb reference](http://docs.mongodb.org/manual/reference/) for mongo operations.
+## Quick Intro to MongoDB Docs
 
-1. In node.js, we use the [mongodb](https://www.npmjs.org/package/mongodb) npm package with singleton db and collections objects created at server start via [dbConnection.js](https://github.com/95civicdude/tweeviews/blob/master/data/dbConnection.js). You probably will never need to access the db object; just use the collections object. To work on documents, do this:
+To work in the db, directly, launch `mongo` in Terminal and run [mongodb collection methods](https://docs.mongodb.org/manual/reference/method/#collection) against tweeviews's clients collection. For example:
+```bash
+mongo
+> use tweeviews
+# see all collections
+> db.getCollectionNames()
+# get the number of client docs
+> db.clients.count()
+# find a client by some field within the client doc schema
+> db.clients.find({"name":"jeffs-testcompany"})
+```
 
-    ```
-    var dbConnection = require("dbConnection.js");
+The node app uses the [mongodb npm package](https://www.npmjs.org/package/mongodb) with singleton db and collections objects created at server start via [dbConnection.js](data/dbConnection.js). You probably will never need to access the db object; just use the collections object. To work on documents, do this:
 
-    dbConnection.getCollection(function(clientsCollection) {
-        // find a client by name
-        clientsCollection.find({
-            "name" : "clientName"
-        // loop over each client found with the given name
-        }).each(function(err, clientDoc) {
-            if (err) {
-                throw err;
-            }
+```javascript
+var dbConnection = require("dbConnection.js");
 
-            if (clientDoc) {
-                // do stuff with the client document
-                console.log(JSON.stringify(clientDoc, null, "    "));
-            }
-        });
+dbConnection.getCollection(function(clientsCollection) {
+    // find a client by name
+    clientsCollection.find({
+        "name" : "jeffs-testcompany"
+    // loop over each client found with the given name
+    }).each(function(err, clientDoc) {
+        if (err) {
+            throw err;
+        }
+
+        if (clientDoc) {
+            // do stuff with the client document
+            console.log(JSON.stringify(clientDoc, null, "    "));
+        }
     });
-    ```
+});
+```
 
-To add or update a client: [http://localhost:3000/clients/](http://localhost:3000/clients/).
-To add, update, or end a campaign: [http://localhost:3000/campaigns/](http://localhost:3000/campaigns/).
+## The Twitter Poller
 
-TWITTER POLLER
-==============
-To turn the Twitter poller on or off, set `data.twitterPoller.pollingInterval = n` in [config.js](https://github.com/95civicdude/tweeviews/blob/master/config.js) where n is some time value in milliseconds (0 = off).
+To turn the Twitter poller on or off, set `data.twitterPoller.pollingInterval = n` in [config.js](config.js) where _n_ is some time value in milliseconds (0 = off).
 
-CONFIGURATION
-=============
-Place configuration settings in [config.js](https://github.com/95civicdude/tweeviews/blob/master/config.js).
+## Configuration
+
+Place configuration settings in [config.js](config.js).

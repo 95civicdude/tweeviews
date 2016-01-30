@@ -13,29 +13,32 @@
     "express": "*",
     "jade": "*",
     "mongodb" : "*",
-    "request" : "*",
     "twitter" : "*"
   },
   "contributors" : [
     {
       "name" : "Ben Balentine",
-      "email" : "ben.balentine@bazaarvoice.com"
+      "url" : "https://github.com/bdb-bv"
     },
     {
       "name" : "Mitch Heard",
-      "email" : "mitch.heard@bazaarvoice.com"
+      "email" : "mitch.heard@bazaarvoice.com",
+      "url" : "https://github.com/mitchheard"
     },
     {
       "name" : "Nikki Jeske",
-      "email" : "nikki.jeske@bazaarvoice.com"
+      "email" : "nikki.jeske@bazaarvoice.com",
+      "url" : "https://github.com/nikkijeske"
     },
     {
       "name" : "Jeff Lamoureux",
-      "email" : "jeff.lamoureux@bazaarvoice.com"
+      "email" : "jeff.lamoureux@bazaarvoice.com",
+      "url" : "https://github.com/95civicdude"
     },
     {
       "name" : "Jeremy A. Love",
-      "email" : "jeremy.love@bazaarvoice.com"
+      "email" : "jeremy.love@bazaarvoice.com",
+      "url": "https://github.com/jlove-bazaarvoice"
     }
   ]
 }
